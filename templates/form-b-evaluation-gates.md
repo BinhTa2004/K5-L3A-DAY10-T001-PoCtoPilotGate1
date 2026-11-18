@@ -1,6 +1,10 @@
 # Phiếu B · Đo, rủi ro, cổng vòng 1 và quyết định v1 · Khối 2A + 2B + chốt (phút 65–115)
 
-**Bàn:** ______
+**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1
+
+**Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
+
+**Phân công đề xuất:** Ta Cong Binh — B0–B2, B7.1, dòng HAZOP kỹ thuật B4; Nguyen Tuan Dung — dự thảo B3 để Đăng soát, B7.2, B7.3; Hoang Hai Long — tổng hợp B4 và viết phần ngoài kỹ thuật, B5, B7.5, B7.6; Trần Tuấn Đăng — soát và chịu trách nhiệm B3, B7.4, tổng hợp B8. Mỗi người cung cấp bằng chứng cho checklist; B6 và quyết định v1 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
 
 Tiêu chí đã ký ở Phiếu A. Từ phút 65 bàn mới được chạy trợ lý. Khối 2A (65–85) chưa sửa code hay config. Khối 2B (85–105) sửa
 `lab10/guards.py` và `config/operating_gates.json`. Phút 105–115 chốt cổng vòng 1 rồi viết quyết định v1. Sau phút 115 không sửa phiếu này

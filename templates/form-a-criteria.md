@@ -1,6 +1,10 @@
 # Phiếu A · Tiêu chí và cách đo · Khối 1 (phút 15–65)
 
-**Bàn:** ______ · **Người cầm bút chính:** vai Sản phẩm và kinh doanh (câu 1.3: Kỹ sư cổng; câu 1.2, 1.4: Vận hành và pháp lý)
+**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1 · **Người cầm bút chính (phân công đề xuất):** Trần Tuấn Đăng — Sản phẩm và kinh doanh (câu 1.3: Nguyen Tuan Dung — Kỹ sư cổng; câu 1.2, 1.4: Hoang Hai Long — Vận hành và pháp lý)
+
+**Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
+
+Phân công chi tiết và mục cá nhân: xem `TEAM.md`. Bình hỗ trợ rà soát ranh giới đầu ra A4 và commit/push A5 sau khi nhóm thống nhất. Đây là phân công dự kiến, chưa xác nhận các mục trả lời đã hoàn thành.
 
 Điền phiếu này **trước khi chạy trợ lý lần nào**. Viết xong thì chép ngưỡng sang `config/acceptance_criteria.json`, ký ở phút 60–65,
 rồi mới chạy đánh giá. Khối 1 không sửa code.

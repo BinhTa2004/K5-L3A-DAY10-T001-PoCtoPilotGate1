@@ -1,6 +1,10 @@
 # Phiếu C · Sự cố và quyết định v2 · Khối 3 (phút 125–200)
 
-**Bàn:** ______ · **Thẻ đã bốc:** ___ *(để trống tới phút 125; bốc số xong thì ghi đúng số đó, ví dụ `S3`. Lab Coach đối chiếu với sổ; lệnh tự kiểm tra in dòng này trong report.)*
+**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1 · **Thẻ đã bốc:** ___ *(để trống tới phút 125; bốc số xong thì ghi đúng số đó, ví dụ `S3`. Lab Coach đối chiếu với sổ; lệnh tự kiểm tra in dòng này trong report.)*
+
+**Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
+
+**Phân công đề xuất:** Ta Cong Binh — C0, C2, C7 phần code, dòng HAZOP kỹ thuật C4, chạy đánh giá và gom file; Nguyen Tuan Dung — phối hợp C2, dự thảo specification C5 câu 3.2, tổng hợp C6 / C9 từ nhánh cả nhóm, phụ trách C8 và trích số liệu; Hoang Hai Long — phần riêng theo thẻ, tổng hợp C4 và viết phần ngoài kỹ thuật, C5 câu 3.3, C7 phần vận hành / pháp lý, C10, C11, submission.json và kiểm gói nộp; Trần Tuấn Đăng — soát specification C5 câu 3.2, C7 phần kinh doanh, tổng hợp C1 / C12 và góp nhánh kinh doanh cho fault tree. Quyết định v2 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
 
 Mở `incidents/Sx/card.md` của đúng số đã bốc. Các bước trên thẻ trỏ về đúng mục trong phiếu này. Mục C3 chỉ điền phần ứng với
 số thẻ của bàn; các phần khác để trống.
