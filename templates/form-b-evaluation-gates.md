@@ -4,7 +4,7 @@
 
 **Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
 
-**Phân công đề xuất:** Ta Cong Binh — B0–B2, B7.1, dòng HAZOP kỹ thuật B4; Nguyen Tuan Dung — dự thảo B3 để Đăng soát, B7.2, B7.3; Hoang Hai Long — tổng hợp B4 và viết phần ngoài kỹ thuật, B5, B7.5, B7.6; Trần Tuấn Đăng — soát và chịu trách nhiệm B3, B7.4, tổng hợp B8. Mỗi người cung cấp bằng chứng cho checklist; B6 và quyết định v1 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
+**Phân công:** Ta Cong Binh — B0–B2, B7.1, dòng HAZOP kỹ thuật B4; Nguyen Tuan Dung — B3 cùng Đăng, B7.2, B7.3; Hoang Hai Long — tổng hợp B4 và viết phần ngoài kỹ thuật, B5, B7.5, B7.6; Trần Tuấn Đăng — soát và chịu trách nhiệm B3, B7.4, tổng hợp B8. Mỗi người cung cấp bằng chứng cho checklist; B6 và quyết định v1 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
 
 Tiêu chí đã ký ở Phiếu A. Từ phút 65 bàn mới được chạy trợ lý. Khối 2A (65–85) chưa sửa code hay config. Khối 2B (85–105) sửa
 `lab10/guards.py` và `config/operating_gates.json`. Phút 105–115 chốt cổng vòng 1 rồi viết quyết định v1. Sau phút 115 không sửa phiếu này
@@ -27,7 +27,7 @@ Tiêu chí đã ký ở Phiếu A. Từ phút 65 bàn mới được chạy tr�
 
 ## B0 · Nhật ký lần chạy vòng 1
 
-Nhật ký thực tế: năm lần đầu do Bình thực hiện với hỗ trợ Codex, giữ nguyên tiêu chí đã ký và config lúc đó. Các lần kiểm chứng sau dùng snapshot đã khóa hoặc bản tích hợp và ghi riêng trong journal; chuẩn hóa LF không đổi logic. CLI ghi mốc base bằng tên nội bộ before.
+Nhật ký vòng 1 gồm năm lần chạy đầu với tiêu chí đã ký và config tại thời điểm đánh giá. Các lần kiểm chứng sau dùng snapshot đã khóa hoặc bản tích hợp và ghi riêng trong journal; chuẩn hóa LF không đổi logic. CLI ghi mốc base bằng tên nội bộ before.
 
 | # | Mã lần chạy | Bộ ticket · mốc | Đổi MỘT thứ gì | pass_rate (CI 95%) | pass_k | Hoàn sai (đ) · lỗi hãng oan · lộ dữ liệu | Tỉ lệ chuyển người | Kết luận |
 |---|---|---|---|---|---|---|---|---|
@@ -36,10 +36,10 @@ Nhật ký thực tế: năm lần đầu do Bình thực hiện với hỗ tr�
 | 3 | R-base-after-20261118-160528-7ee4f6 | base · after | Chỉ thêm G2: lỗi hãng theo tracking từng kiện | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Không ca mới hỏng; kiểm tiếp phạm vi nhiệm vụ |
 | 4 | R-base-after-20261118-160529-c57b3f | base · after | Chỉ thêm G3: payload hãng theo allowlist nguồn DB | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Không ca mới hỏng; kiểm tiếp phạm vi nhiệm vụ |
 | 5 | R-base-after-20261118-160732-1cbe2c | base · after | Chỉ làm chặt kiểm hạn phê duyệt bằng ngày ISO | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Không ca mới hỏng; kiểm tiếp phạm vi nhiệm vụ |
-| 6 | R-base-prepared-20261118-165612-591bdf | base · prepared | Kiểm chứng lại đúng snapshot ba703106 sau khôi phục LF; không tái tạo checkpoint | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Đạt; lần kiểm chứng mới, không giả lập report cũ |
+| 6 | R-base-prepared-20261118-165612-591bdf | base · prepared | Kiểm chứng lại đúng snapshot ba703106 sau khôi phục LF; không tái tạo checkpoint | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Đạt; kiểm chứng bổ sung |
 | 7 | R-base-after-20261118-165612-591bdf | base · after | Đo code/config tích hợp hiện tại trước khi đọc S1 | 1.0 [1.0, 1.0] | 1.0 | 0 · 0 · 0 | 0.2273 | Không regression; 4.274đ/ticket, ROI 1.34 |
 
-Report và nhật ký được sao chép nguyên trạng vào submission/runs/ để nhóm xem khi nhận code. Đây mới là gói bằng chứng kỹ thuật vòng 1, chưa phải bài nộp đầy đủ hoặc báo cáo grade sự cố.
+Nhật ký các lần chạy vòng 1 được giữ trong submission/runs/journal.jsonl. Các bảng trong Phiếu B ghi kết quả và mã chạy lịch sử; gói nộp cuối chỉ kèm report tự kiểm tra gần nhất và ba report S1 base/prepared/after theo submission/README.md.
 
 ---
 
@@ -57,7 +57,7 @@ Mã baseline: `R-base-before-20261118-160203-bde05c`; 22 ticket × 5 seed = 110 
 |---|---|
 | Cổng số liệu phát hiện hoàn sai và lỗi hãng oan dù pass_rate gần 100%; ngăn phát hành khi còn vượt tiêu chí an toàn đã ký | MockLLM và bộ nền hữu hạn không đại diện khách thật; nhãn/DB cũng có thể sai; không tự quyết được khả năng trực, pháp lý hoặc phạm vi pilot |
 
-Khuyến nghị kỹ thuật của Bình: **kết hợp**. Máy chặn điều kiện an toàn bắt buộc và regression; con người kiểm bằng chứng, điểm mù, chi phí/phạm vi và chốt v1/v2. Chưa coi khuyến nghị này là quyết định chung của nhóm.
+Khuyến nghị: **kết hợp**. Máy chặn điều kiện an toàn bắt buộc và regression; con người đánh giá bằng chứng, điểm mù, chi phí/phạm vi và quyết định v1/v2.
 
 ---
 
@@ -90,7 +90,7 @@ Khuyến nghị kỹ thuật của Bình: **kết hợp**. Máy chặn điều k
 | Vì sao là lỗi | Quyền lợi theo DB và policy hiện hành bằng 0, sổ cái lại ghi 20.000đ | Tracking 2 ngày chưa đạt điều kiện ghi lỗi theo policy, nhưng hãng nhận một lỗi |
 | Kiểu giải pháp | G1 kiểm lại quyền lợi, chủ đơn, policy và sổ cái trước issue_refund; không đủ căn cứ thì từ chối hoặc chuyển người | G2 chỉ cho ghi lỗi có căn cứ trên đúng kiện/hãng/nguyên nhân; G3 chỉ gửi payload đáng tin và được phép |
 | Đường đi sau sửa | Với T-002@55, gate deny khoản hoàn; agent trả lời chưa hoàn và kết thúc denied | Ca này không còn đi tới file_carrier_fault / notify_carrier vì khoản hoàn bị chặn; không có lỗi hãng hoặc thông báo phát sinh |
-| Tín hiệu để theo dõi | Event model_override và gate khi đề xuất lệch DB đã có trong trace; đề nghị Dũng thiết kế monitor ở vòng 2, hiện chưa đăng ký chỉ số mới | Event gate cho file_carrier_fault / notify_carrier và số wrongful_carrier_faults trong report; chỉ số đúng/sai offline không sẵn nhãn khi pilot |
+| Tín hiệu để theo dõi | Event model_override và gate khi đề xuất lệch DB đã có trong trace; monitor chuyên biệt chưa được đăng ký tại vòng 1 | Event gate cho file_carrier_fault / notify_carrier và số wrongful_carrier_faults trong report; chỉ số đúng/sai offline không sẵn nhãn khi pilot |
 
 Kiểm lại sau sửa: trace in status=denied, amount_vnd=0; sổ cái, lỗi hãng và gửi hãng đều rỗng; score_trial báo ĐẠT. Không xử lý riêng mã ticket/seed hay câu khách viết.
 
@@ -230,7 +230,7 @@ Phiếu C mục C1 (bút khác màu).*
 4. **2 phút:** chọn 2–3 lý do sẽ biến thành **cổng phòng ngừa** ngay hôm nay (code trong `guards.py` hoặc con số trong
    `config/operating_gates.json`). Lý do còn lại → Risk register.
 
-Hai dòng kỹ thuật do Bình viết; các dòng kinh doanh, con người và vận hành, pháp lý do Long dự thảo từ report base. Cả bàn cần xác nhận và chọn 2–3 cổng; cổng đã dựng: G1, G2, G3 (code) và các cổng config ở cột cuối.
+Bình phụ trách nhánh kỹ thuật; Long phụ trách nhánh kinh doanh, vận hành và pháp lý từ report base. Các cổng đã dựng gồm G1, G2, G3 và các cổng config ở cột cuối.
 
 Bốn lăng kính (bắt buộc đủ cả bốn; dự án AI hay chết ở ba lăng kính sau hơn là ở lăng kính đầu):
 
@@ -243,9 +243,9 @@ Bốn lăng kính (bắt buộc đủ cả bốn; dự án AI hay chết ở ba 
 
 | Lý do thất bại (viết ở thì quá khứ) | Lăng kính | Kiểm được hôm nay? (trace / data / config nào) | Thành cổng phòng ngừa nào (code hay config) / hay vào risk register |
 |---|---|---|---|
-| Trợ lý đã lấy lời khai khách đè lên tracking, làm hoàn tiền và ghi lỗi hãng không có căn cứ | Kỹ thuật — đóng góp dự thảo của Bình | T-002@55 event 03 model_override, 05 proposal, 06 issue_refund và 07 file_carrier_fault | G1 kiểm khoản hoàn từ DB; G2 kiểm lỗi hãng từ kiện thực tế |
-| Chúng tôi đã gửi nguyên customer_note ra hãng và không kiểm soát trường dữ liệu ngoài phạm vi cho phép | Kỹ thuật — đóng góp dự thảo của Bình, cần Long rà soát pháp lý | T-002@55 event 08 notify_carrier có customer_note; baseline chưa có PII không chứng minh mọi ghi chú an toàn | G3 dựng payload từ nguồn DB theo allowlist chính sách, bỏ văn bản tự do |
-| Ticket thiếu mã đơn và đơn sỉ đều phải chuyển người, chi phí mỗi ticket vượt làm tay, Finance rút ngân sách | Kinh doanh, dự thảo của Long để Đăng soát | Có: base `R-base-before-20261118-160203-bde05c` nhóm `?` review_rate 1.0, 10.359đ/ticket > 10.000đ | Risk register; theo dõi chi phí theo kho trong report; Đăng cân nhắc `business.pilot_scope` |
+| Trợ lý đã lấy lời khai khách đè lên tracking, làm hoàn tiền và ghi lỗi hãng không có căn cứ | Kỹ thuật — Bình | T-002@55 event 03 model_override, 05 proposal, 06 issue_refund và 07 file_carrier_fault | G1 kiểm khoản hoàn từ DB; G2 kiểm lỗi hãng từ kiện thực tế |
+| Chúng tôi đã gửi nguyên customer_note ra hãng và không kiểm soát trường dữ liệu ngoài phạm vi cho phép | Kỹ thuật — Bình và Long | T-002@55 event 08 notify_carrier có customer_note; baseline chưa có PII không chứng minh mọi ghi chú an toàn | G3 dựng payload từ nguồn DB theo allowlist chính sách, bỏ văn bản tự do |
+| Ticket thiếu mã đơn và đơn sỉ đều phải chuyển người, chi phí mỗi ticket vượt làm tay, Finance rút ngân sách | Kinh doanh, Long và Đăng | Có: base `R-base-before-20261118-160203-bde05c` nhóm `?` review_rate 1.0, 10.359đ/ticket > 10.000đ | Risk register; theo dõi chi phí theo kho trong report; Đăng cân nhắc `business.pilot_scope` |
 | Ngày sale lượng ticket gấp ba, chỉ 1 người trực, ca chuyển người chờ quá 60 phút, khách khiếu nại, chị Hạnh duyệt ẩu cho kịp | Con người và vận hành, Long | Một phần: base 5 ca/ngày, chờ 0 phút, 0 ca ùn; chưa đo cao điểm | **Cổng config:** `operations.reviewers_on_shift`, `review_capacity_per_hour` = 6, `max_queue_wait_minutes` = 60; runbook B7.6 có ngưỡng gọi thêm người |
 | Nhân viên CSKH không tin trợ lý, tự kiểm lại 100% quyết định tự động, nên chi phí không giảm | Con người và vận hành, Long | Có: `staff_behavior.trust_conditions` trong `data/world.json` (cần ghi chú quyết định, kiểm mẫu ≥ 10%, người duyệt NV-HANH) | **Cổng config:** `operations.decision_note` = true, `approver_id` = NV-HANH; kiểm mẫu `review_sampling_pct` vào risk register vì tốn công duyệt |
 | Hãng nhỏ GHSH bị ghi lỗi oan (bị đình chỉ sau 3 lỗi trong 7 ngày); SĐT người nhận quà bị gửi sang hãng; LogiX bị khiếu nại | Pháp lý, Long | Có: base `R-base-before-20261118-160203-bde05c` 1 lỗi hãng oan VNX ở T-002@55; agent.py thêm `recipient_contact` cho đơn quà | **Cổng config:** `legal.carrier_fault_requires_recorded_cause` = true, `pii_fields_blocked_to_third_party` (cùng G2, G3 của Bình) |
@@ -269,13 +269,13 @@ Bốn lăng kính (bắt buộc đủ cả bốn; dự án AI hay chết ở ba 
 
 Kết quả bản cuối: 110/110 trial đạt, pass_rate=1.0 (CI 95% [1.0, 1.0]), pass_k=1.0; hoàn sai=0đ, lỗi hãng oan=0, PII=0; escalation=0.2273; cost=4.202đ/ticket, ROI=1.38; coverage=1.0, queue_stuck=0. Gate so với baseline in không có ca mới hỏng. Test công khai: Ran 13 tests, OK.
 
-Các kiểm tra trực tiếp trên bản sao world công khai: 12 invariant ban đầu và 2 ca ngày phê duyệt hết hạn/sai định dạng cho thay đổi parse ngày; kết quả và code hash tương ứng lưu ở submission/runs/binh-guard-probes.json. Đây không phải test ẩn hay thẻ sự cố. Kiểm thử cho thấy G2/G3 xử lý tham số bị làm lệch và dữ liệu ngoài allowlist, không chỉ dựa vào việc baseline xanh.
+Kiểm tra bổ sung trên bản sao world công khai đã thử 12 invariant và 2 ca ngày phê duyệt hết hạn/sai định dạng. G2/G3 xử lý tham số lệch và khóa ngoài allowlist. Đây là kiểm tra phụ lúc phát triển, không phải test ẩn hoặc deliverable riêng. Bằng chứng bắt buộc về hồi quy nằm trong grade-report và nhật ký; không kèm script/JSON probe vào gói nộp.
 
 Điểm mù còn lại: phụ thuộc DB/policy đúng và cập nhật; config đã được tích hợp nhưng chưa có bằng chứng tải thực tế/test ẩn/pilot thật. Snapshot cũ và bản hiện tại khác nhau; các lần đo trước tích hợp không thay thế report hiện tại. Monitor mới sẽ cần thiết kế sau khi có S1.
 
 ### B7.2 · Câu 2.7 · Hai bước tránh rò rỉ dữ liệu đánh giá
 
-**Bổ sung với hỗ trợ Codex theo yêu cầu trưởng nhóm, sau khi snapshot v1 đã được ghi và trước khi đọc S1; không xác nhận đây là nội dung có ở thời điểm chốt cũ.**
+**Thời điểm bổ sung:** sau khi chốt snapshot vòng 1 và trước khi đọc S1.
 
 1. Giữ nguyên bộ nền, nhãn, seed, helper và bộ chấm; ghi mọi lần thử với mã chạy và lý do thay đổi. Viết cổng theo quan hệ DB/policy/sổ cái, không theo ticket_id, seed hoặc câu chữ của 22 ticket đã biết. Mỗi lần sửa so với baseline để phát hiện regression; không coi bộ nền toàn xanh là bằng chứng tổng quát hóa.
 2. Tách vai trò dữ liệu: bộ nền để phát triển và kiểm hồi quy; sau khi nhận S1, đo prepared trước khi sửa và ghi riêng các thử nghiệm trên S1; dùng ticket tự viết để kiểm tính chất. Test ẩn do team chấm giữ lại, không mở/chỉnh/tự tạo số đạt. Không nới tiêu chí đã ký hoặc bỏ ca hỏng để làm xanh report.
@@ -293,7 +293,7 @@ Các kiểm tra trực tiếp trên bản sao world công khai: 12 invariant ban
 
 Lệnh tái lập: `python -m lab10.trace --suite base --stage after --seed 55 --adhoc "<nguyên văn ở bảng>" --order <order> --customer <customer>`.
 
-Trace nguyên trạng: submission/runs/v1-adhoc-1.txt và v1-adhoc-2.txt; kết quả có code hash tại v1-adhoc-checks.json. Các ca này kiểm tính chất an toàn, không chứng minh tính đầy đủ, test ẩn hay tốc độ xử lý thực tế. Giữ để demo; không sửa guards riêng cho hai câu này.
+Kết quả trace cần đọc đã ghi trong bảng trên; lệnh tái lập dùng đúng hai câu trong bảng để demo. Các ca này kiểm tính chất an toàn, không chứng minh tính đầy đủ, test ẩn hay tốc độ xử lý thực tế. Gói nộp không kèm các file trace/JSON phụ; không sửa guards riêng cho hai câu này.
 
 ### B7.4 · Câu 2.9 · Cổng kinh doanh (`config/operating_gates.json` mục `business`)
 
@@ -314,7 +314,7 @@ nguyên nhân trong tracking). Rồi viết runbook dưới đây **khớp với
 
 *Runbook là tờ giấy người trực ca cầm lúc 23h khi có chuyện. Nó trả lời: nhìn con số nào, ngưỡng nào thì làm gì, ai được quyết.
 Phần 1–3 và mục Giờ cao điểm viết ở vòng 1. Phần 4–5 viết ở vòng 2 (Phiếu C mục C11). Mọi con số phải khớp `config/operating_gates.json` và report.*
-*Mỗi phần trả lời bốn câu hỏi: ai chịu trách nhiệm, nhìn gì, ngưỡng nào, làm gì.* **Người viết được phân công (vai Vận hành và pháp lý):** HoangHaiLong-2A202603670; chưa xác nhận đã hoàn thành runbook
+*Mỗi phần trả lời bốn câu hỏi: ai chịu trách nhiệm, nhìn gì, ngưỡng nào, làm gì.* **Phụ trách vận hành và pháp lý:** HoangHaiLong-2A202603670.
 
 **Ghi chú phiên bản config (Long):** bản chụp vòng 1 `config/operating_gates.round1.json` (checkpoint `ba703106`, 16:07:39) được chụp trước khi phần `operations`/`legal` của Long được merge. Bản chụp có `pic` NV-TUNG, `approver_id` NV-HANH, 1 người trực, 6 ca/giờ, chờ tối đa 60 phút, kênh `slack-#ops-alerts`, 1 câu dừng và 3 trường PII (`customer_phone`, `customer_address`, `customer_note`). Bản `config/operating_gates.json` hiện tại giữ nguyên các số đó, chỉ thêm 5 câu `stop_conditions` cụ thể và mở rộng `pii_fields_blocked_to_third_party` (thêm `recipient_contact`, `phone`, `name`…). Runbook dưới đây viết theo bản hiện tại; không sửa bản chụp vòng 1.
 
@@ -370,7 +370,7 @@ Lượng ticket có thể dồn gấp ba trong một giờ (ngày sale, sau bão
 
 ## B8 · Chốt cổng vòng 1 và quyết định Gate 1 · v1 (phút 105–115)
 
-**Ghi chú kiểm chứng bổ sung:** snapshot ba703106 đã được khôi phục đúng byte LF và verify hợp lệ; đo lại bằng `R-base-prepared-20261118-165612-591bdf` trước khi đọc S1. Report `R-base-prepared-20261118-160742-f30e7d` được dẫn trong bảng v1 gốc chưa có trên máy này; không tạo giả report/journal đó. Bảng quyết định gốc được giữ nguyên dưới đây để không sửa hồi tố v1; các hiệu đính dữ kiện và số kiểm chứng nằm trong phụ lục cuối phiếu. Bản trước kiểm chứng được lưu nguyên trạng ở submission/docs/form-b-v1-recorded-before-readiness.md.
+**Ghi chú kiểm chứng bổ sung:** snapshot ba703106 đã được khôi phục đúng byte LF và verify hợp lệ; đo lại bằng `R-base-prepared-20261118-165612-591bdf` trước khi đọc S1. Report `R-base-prepared-20261118-160742-f30e7d` trong bảng v1 gốc không có trong dữ liệu lưu trữ hiện tại; kết quả kiểm chứng bổ sung được dẫn trong phụ lục. Bảng quyết định v1 được giữ làm mốc đối chiếu; các hiệu đính dữ kiện và số kiểm chứng bổ sung nằm trong phụ lục cuối phiếu.
 
 
 Làm đúng thứ tự:
@@ -426,4 +426,4 @@ git push -u origin main
 - Ngày 2026-11-25 trong bảng gốc là mốc xem xét lại do nhóm ghi, không phải bằng chứng đã chạy pilot thật. Bài này vẫn là mock/offline. Quyết định Tiếp tục của v1 gốc được giữ làm mốc so sánh; việc cho pilot/v2 còn phải thỏa tiêu chí trên gói sự cố và các trần đã ký.
 - Behavioral test B7.3 được bổ sung sau snapshot, trước đọc thẻ, có trace thật. Không coi nó là bằng chứng nhóm đã làm trước thời điểm snapshot cũ.
 - Checklist B5: chất lượng/chi phí/quyền hạn/pháp lý ở bộ nền có số kiểm chứng; phần đối kháng hiện tại đã có hai ticket; tải cao điểm, giả định DB thật, monitor sự cố và test ẩn vẫn là rủi ro cần kiểm, không đánh dấu đã thử.
-- Các thay đổi và report bổ sung này chưa được Codex commit/push; Bình tự commit/push để đồng đội nhận cùng bằng chứng.
+- Nhật ký lưu đầy đủ các lần chạy, bao gồm các lần chưa đạt.

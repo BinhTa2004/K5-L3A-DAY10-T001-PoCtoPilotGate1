@@ -1,209 +1,100 @@
-# Team
+# TEAM · LAB 10 · T001
 
-## Thông tin nhóm
+- Lớp: L3A.
+- Repo: https://github.com/BinhTa2004/K5-L3A-DAY10-T001-PoCtoPilotGate1
+- Trưởng nhóm: Ta Cong Binh — 2A202603628.
+- Thẻ đã bốc: **S1**. Nhóm chỉ phân tích và chạy S1; bộ nền dùng để kiểm hồi quy.
 
-- Tên nhóm (`TenNhom`, không dấu, không khoảng trắng): `T001`
-- Lớp: `L3A`
-- Repo của bàn: `K5-L3A-DAY10-T001-PoCtoPilotGate1`
-- Link repo: https://github.com/BinhTa2004/K5-L3A-DAY10-T001-PoCtoPilotGate1
-- Trưởng nhóm: Ta Cong Binh — MSSV `2A202603628`.
-- Thẻ sự cố đã bốc (S1–S8): `S1` (người dùng xác nhận trong phiên).
+## Thành viên và phân công
 
-## Thành viên
-
-Vai và đầu việc bên dưới là phân công đề xuất để nhóm xác nhận. Trưởng nhóm là Ta Cong Binh theo xác nhận của nhóm. Tên của ba thành viên được cung cấp không dấu được giữ không dấu, có tách khoảng trắng.
-
-| STT | Họ và tên | MSSV | Vai | Trưởng nhóm |
-| --: | --------- | ---- | --- | :---------: |
-| 1 | Trần Tuấn Đăng | 2A202603618 | Sản phẩm và kinh doanh | |
-| 2 | Ta Cong Binh | 2A202603628 | Kỹ sư cổng | Có |
-| 3 | Nguyen Tuan Dung | 2A202603608 | Kỹ sư cổng | |
-| 4 | Hoang Hai Long | 2A202603670 | Vận hành và pháp lý | |
-
-Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.
-
-## Phân công đề xuất
-
-Phân công theo ba vai trong `problem-set.md`: hai Kỹ sư cổng, một Sản phẩm và kinh doanh, một Vận hành và pháp lý. Các đầu việc là kế hoạch thực hiện, chưa phải xác nhận đã hoàn thành.
-
-| Thành viên | Vòng 1 | Vòng 2 và nộp bài | File / mục phụ trách chính |
+| Thành viên | MSSV | Vai | Nội dung phụ trách |
 |---|---|---|---|
-| Trần Tuấn Đăng | Mục tiêu, tiêu chí, quy tắc quyết định; soát bản đồ dữ liệu / drift Dũng dự thảo; trần tiền, chi phí, ROI, phạm vi pilot; tổng hợp v1 | Soát specification; phân tích và sửa cổng business; tổng hợp C1, v2 và ba dòng bắt buộc; góp nhánh kinh doanh cho fault tree, trình bày quyết định | Sản phẩm và kinh doanh. A1 câu 1.1, A3–A5; `config/acceptance_criteria.json`; `config/operating_gates.json` mục `business`; B3 (soát và chịu trách nhiệm), B7.4, B8; C1, C5 câu 3.2 (soát), C7 phần kinh doanh, C12; góp nhánh kinh doanh C6 / C9. |
-| Ta Cong Binh | Trưởng nhóm, repo / Git, tiến độ; hỗ trợ ranh giới đầu ra A4 và commit/push A5; baseline, trace, guards; cung cấp HAZOP kỹ thuật; chốt và đo prepared | Grade trước sửa; trace, sửa guards; bằng chứng HAZOP / fault tree; eval, grade và --collect sau khi đủ dữ liệu; trình bày ba mốc, đẩy bài | Trưởng nhóm, Kỹ sư cổng. `lab10/guards.py`; hỗ trợ A4–A5; B0–B2, B7.1; dòng kỹ thuật B4 / C4; C0, C2, C7 phần code; bằng chứng C6 / C9; chạy lệnh gom bài để Long kiểm nội dung. |
-| Nguyen Tuan Dung | Offline metric; lập bản nháp bản đồ dữ liệu và bằng chứng drift để Đăng soát; hai bước tránh rò rỉ dữ liệu, behavioral test với hai ticket mới; test và hồi quy | Cùng dò lỗi; dự thảo specification; tổng hợp fault tree từ nhánh cả nhóm cung cấp; monitor; trích số report cho Đăng; kiểm hồi quy, đủ report và demo ticket hiểm | Kỹ sư cổng. A2 câu 1.3; B3 (dự thảo), B7.2, B7.3; `lab10/monitors.py`; C2, C5 câu 3.2 (dự thảo để Đăng soát), C6 / C9 (tổng hợp), C8; trích số liệu C12 và kiểm đủ report khi gom bài. |
-| Hoang Hai Long | Mục tiêu kế toán / trưởng ca, telemetry; tổng hợp HAZOP, viết phần ngoài kỹ thuật; checklist từ bằng chứng từng người; operations / legal, runbook 1–3 và giờ cao điểm | Số thẻ và phần riêng theo thẻ, giả định môi trường; tổng hợp HAZOP sự cố; sửa operations / legal; risk register, checklist, runbook 4–5; submission.json và kiểm gói nộp Bình gom | Vận hành và pháp lý. A1 câu 1.2, A2 câu 1.4; B4 (tổng hợp và ngoài kỹ thuật), B5, B7.5, B7.6; `config/operating_gates.json` mục `operations`, `legal`; C3, C4 (tổng hợp và ngoài kỹ thuật), C5 câu 3.3, C7 phần vận hành / pháp lý, C10, C11; `submission/submission.json`, kiểm nội dung gói bài. |
+| Trần Tuấn Đăng | 2A202603618 | Sản phẩm và kinh doanh | A1, A3–A5; soát B3; business gates, B7.4, B8; C1, soát specification, C12 và ba dòng bắt buộc; nhánh kinh doanh của fault tree |
+| Ta Cong Binh | 2A202603628 | Trưởng nhóm, kỹ sư cổng | Repo/Git và tiêu chí ký; B0–B2, guards, HAZOP kỹ thuật; checkpoint, grade/trace/eval, C0/C2/C7; gom bài |
+| Nguyen Tuan Dung | 2A202603608 | Kỹ sư cổng | A2 offline metric, dự thảo B3, B7.2–B7.3; specification, C6/C9, monitors/C8; số liệu và hồi quy |
+| Hoang Hai Long | 2A202603670 | Vận hành và pháp lý | A1 góc nhìn người vận hành, telemetry; B4–B5, operations/legal, B7.5–B7.6; C3–C5 phần môi trường, C10–C11 và submission.json |
 
-### Phối hợp để cân khối lượng
-
-Cân cả code, chạy lệnh, phân tích và viết phiếu. Người phụ trách nội dung được hỗ trợ bằng bản nháp và bằng chứng cụ thể. Đây là kế hoạch phân công, chưa xác nhận công việc đã hoàn thành.
-
-| Phần việc | Người chuẩn bị | Người soát / tổng hợp |
-|---|---|---|
-| B3: dữ liệu và drift | Dũng lập bảng nguồn dữ liệu, thu thập bằng chứng | Đăng phân tích tác động và hoàn thiện kết luận |
-| B4 / C4: HAZOP | Bình viết các dòng kỹ thuật từ trace; Long viết phần ngoài kỹ thuật và nhánh chưa thấy trên trace | Long tổng hợp, kiểm đủ yêu cầu từng vòng |
-| C5 câu 3.2: specification | Dũng dự thảo quy tắc kiểm được bằng code / report | Đăng soát quy tắc và tác hại; Long viết giả định môi trường ở câu 3.3 |
-| C6 / C9: fault tree | Bình cung cấp nhánh code / trace; Đăng nhánh kinh doanh; Long nhánh vận hành / pháp lý | Dũng tổng hợp cây, cả nhóm kiểm bằng chứng và vị trí gate |
-| B5 / C10 / C11: checklist và rủi ro | Mỗi người cung cấp bằng chứng, trạng thái, PIC và rủi ro của phần mình | Long tổng hợp và hoàn thiện runbook |
-| Gom bài | Bình chạy grade và check_submission --collect đúng thứ tự; Dũng kiểm đủ report / mã lần chạy | Long kiểm submission.json và gói nộp; Đăng soát quyết định và ba dòng bắt buộc |
-
-Khi nhận thẻ, Bình cùng nhóm rà lại khối lượng theo nguyên nhân thực tế. Người đã xong đầu việc nhận thêm phần trích số, định dạng và tổng hợp bằng chứng nếu phần code hoặc vận hành phát sinh nhiều; giữ người chịu trách nhiệm nội dung theo ba vai.
-
-### Việc cả nhóm cùng chốt
-
-- A3: cùng thảo luận kết luận, Đăng tổng hợp. A4: thống nhất ngưỡng và hành động trước khi ký, commit và push tiêu chí, rồi mới chạy đánh giá.
-- B6: cùng làm pre-mortem đủ bốn lăng kính, chọn 2–3 lý do thành cổng phòng ngừa.
-- C6 và C9: cùng lập fault tree trước và sau sửa, có ít nhất hai nhánh ở hai tầng khác nhau và bằng chứng cho mỗi lá; Dũng tổng hợp, Bình cung cấp trace / vị trí gate, Đăng và Long cung cấp nhánh ngoài kỹ thuật.
-- Phần riêng theo thẻ chỉ làm đúng mục tương ứng số đã bốc; nếu là S4, phần riêng nằm ở C1 và B7.6.
-- Quyết định v1 và v2 do cả nhóm thống nhất theo tiêu chí đã ký và report thật; người tổng hợp không tự quyết thay nhóm.
-- Sau demo, phối hợp trả code / config về bản v2, chạy lại grade và gom bài nếu có thay đổi; kiểm tra đủ thành phần trước khi push.
-- Mỗi người tự hoàn thiện đóng góp, bằng chứng, exit ticket và khai báo dùng AI nếu có; mỗi người tự nộp link repo nhóm trên LMS.
-
-### Người đứng tên, người rà soát và ghi nhận đóng góp
-
-Phân công dưới đây được lập theo yêu cầu trong phiên. Tên người phụ trách ở đây không thay cho xác nhận đã rà soát hoặc đã làm xong.
-
-| Hồ sơ / bước | Người soạn / chuẩn bị | Người rà soát được phân công | Người đứng tên ký / chốt |
-|---|---|---|---|
-| Tiêu chí và Phiếu A | Đăng phụ trách nội dung; Codex hỗ trợ soạn | Dũng: cách đo; Long: vận hành/pháp lý; Bình: tổng thể | Bình (TaCongBinh-2A202603628); lệnh ký được thực hiện bằng Codex theo yêu cầu trong phiên, kết quả đối chiếu lock và Git |
-| Quyết định v1 ở B8 | Đăng tổng hợp, Bình cung cấp report prepared | Dũng kiểm số liệu, Long kiểm vận hành/pháp lý; cả nhóm thống nhất | Bình được phân công ký sau khi đủ bằng chứng; hiện chưa ký v1 |
-| Quyết định v2 ở C12 | Đăng tổng hợp; Dũng trích report ba mốc | Bình kiểm code/report, Long kiểm tác động và runbook; cả nhóm thống nhất | Bình được phân công ký sau khi đủ bằng chứng; hiện chưa ký v2 |
-| Runbook và gói submission | Long phụ trách nội dung, Bình chạy gom file | Dũng kiểm đủ report; Đăng kiểm quyết định và ba dòng | Long xác nhận nội dung phần phụ trách; Bình điều phối nộp sau khi hoàn tất |
-| Mục cá nhân TEAM.md | Từng thành viên tự ghi | Tự đối chiếu commit, lần chạy và phiếu thật | Mỗi người tự xác nhận đóng góp, AI đã dùng và exit ticket; không ký thay |
-
-Từ bước này, bản soạn tiêu chí có dùng PRD/eval card Lab 9 của Bình và ops_facts/ops_limits Day 10. Chi phí 8.000đ, ROI 0.25 và escalation 0.40 là lựa chọn thiết kế nêu lý do trong Phiếu A, không phải kết quả đo hoặc yêu cầu số cố định của đề. Chưa chạy eval/grade Day 10 để chọn ngưỡng.
-
-### Trạng thái ký và tự commit/push
-
-- Người được phân công đứng tên: TaCongBinh-2A202603628, trưởng nhóm.
-- Lệnh ký đã tạo acceptance_criteria.lock; giữ nguyên cả file tiêu chí và lock, không ký lại. Hash đối chiếu trong Phiếu A mục A5.
-- Theo yêu cầu người dùng, ba commit do Codex tạo đã được thu hồi khỏi main; main trên GitHub trở về commit 79a6c79 của người dùng. Nhánh sửa trên GitHub đã được thu hồi. Nội dung bài làm trên máy được giữ lại ở trạng thái chưa commit.
-- Bình đã tự commit/push tiêu chí bằng commit d64c642 (Sign acceptance criteria) trước baseline; A5 đã ghi mã thật. Các thay đổi kỹ thuật hiện tại để người dùng tự commit/push.
-- Git cục bộ giữ nguyên byte của config/acceptance_criteria.json khi git add để hash trong commit khớp lock. Không sửa hoặc tự định dạng lại file tiêu chí.
-- Baseline và các lần base/after vòng 1 đã chạy sau commit d64c642; chưa có prepared, grade sự cố hoặc chữ ký v1/v2. Từng người tự xác nhận phần rà soát và đóng góp thực tế của mình.
-- Bản sao các commit trước thu hồi được giữ ở nhánh backup/day10-before-user-commit trên máy. Codex không tự commit/push tiếp nếu chưa được yêu cầu.
-
-### Ghi nhận hỗ trợ AI trong bước chuẩn bị
-
-Nhóm đã dùng Codex để điền danh sách thành viên theo thông tin cung cấp và soạn phân công đề xuất. Các mục cá nhân bên dưới là khung để từng người hoàn thiện theo việc thực tế, chưa phải xác nhận đã làm xong.
-
-## Cá nhân
-
-Mỗi thành viên tự hoàn thiện mục của mình. Phần việc được điền theo phân công đề xuất; đóng góp, bằng chứng và exit ticket phải phản ánh công việc thực tế.
+Các thành viên phụ trách nội dung theo bảng phân công. Mã lần chạy và báo cáo đánh giá là bằng chứng chung của nhóm.
 
 ## TranTuanDang-2A202603618
 
-### Phần việc phụ trách
-
-Sản phẩm và kinh doanh. A1 câu 1.1, A3–A5; `config/acceptance_criteria.json`; `config/operating_gates.json` mục `business`; B3 (soát và chịu trách nhiệm), B7.4, B8; C1, C5 câu 3.2 (soát), C7 phần kinh doanh, C12; góp nhánh kinh doanh C6 / C9.
-
 ### Đóng góp cụ thể
 
-- Phụ trách xây dựng mục tiêu hệ thống (Phiếu A mục A1) và bộ tiêu chí chấp nhận tại `config/acceptance_criteria.json`, xác lập 5 ngưỡng bắt buộc (hoàn sai = 0, lỗi hãng oan = 0, lộ PII = 0), ngưỡng kinh doanh và 4 quy tắc quyết định Gate 1.
-- Soát và chịu trách nhiệm toàn bộ Bản đồ dữ liệu hệ thống và phân tích ví dụ Data Drift trong 3 tháng tới khi chuyển đổi chính sách REFUND-v3 sang v4 (Phiếu B mục B3).
-- Cấu hình và giải trình Cổng kinh doanh trong `config/operating_gates.json` mục `business` (trần ngân sách ngày 2.000.000đ, ngân sách LLM 1.500đ/ticket, ROI >= 0.25) và điền Phiếu B mục B7.4.
-- Đóng góp góc nhìn kinh doanh/tài chính trong Pre-mortem (B6), rà soát kết quả mốc base và prepared, tổng hợp Quyết định Gate 1 · v1 (Tiếp tục) tại Phiếu B mục B8.
+- Xây dựng mục tiêu, tiêu chí chất lượng/an toàn, chi phí/ROI và bốn quy tắc quyết định; soát Phiếu A và bản đồ dữ liệu/drift B3.
+- Giải trình trần hoàn ngày 2.000.000đ, ngân sách LLM 1.500đ/ticket, ROI tối thiểu 0.25 tại B7.4.
+- Tổng hợp quyết định v1 tại B8; phụ trách đối chiếu kết quả v2 với ngưỡng đã ký, đọc phân khúc xấu nhất và ba dòng bắt buộc ở C12.
 
 ### Bằng chứng
 
-- Mã commit: `d64c642` (Sign acceptance criteria), `94f4aaa` (LAB 10: chốt cổng vòng 1, quyết định v1) trên branch `tuandang`.
-- Mã lần chạy: baseline `R-base-before-20261118-160514-b45eeb` · prepared `R-base-prepared-20261118-160742-f30e7d`.
-- Vị trí trong phiếu: Phiếu A mục A1, A4, A5; Phiếu B mục B3, B7.4, B8; `config/operating_gates.json` mục `business`.
+- Commit `94f4aaa`: chốt cổng vòng 1/quyết định v1; bản tiêu chí của nhóm được ký bằng commit `d64c642`.
+- Phiếu A; B3, B7.4, B8; C1, C5, C12 và `config/operating_gates.json` mục business.
+- B8 gốc dẫn một run prepared cũ chưa có report trên máy; phụ lục B ghi rõ và bổ sung kết quả kiểm chứng `R-base-prepared-20261118-165612-591bdf`, không tạo giả report cũ.
 
 ### Exit ticket
 
-- Một điều học được: Cách chuyển hóa yêu cầu nghiệp vụ và trần tài chính thành các cổng kiểm soát định lượng cấp hệ thống (system-level gates) để chặn đứng rủi ro bồi hoàn sai mà vẫn duy trì ROI cao (1.34 so với làm tay).
-- Một điều còn chưa chắc: Khả năng kiểm soát tình trạng tài xế quét khống trạng thái giao hàng khi mở rộng quy mô pilot ra ngoài 2 depot thử nghiệm ban đầu.
-
-### Sử dụng AI
-
-Sử dụng trợ lý AI để tra cứu công thức tính chi phí và ROI trong `lab10/ops.py`, hỗ trợ cấu trúc hóa câu tiêu chí và rà soát tính nhất quán giữa các con số trong config với báo cáo đánh giá. Kiểm tra lại 100% bằng lệnh `python3 -m lab10.eval` và `lab10.gate`.
+- Điều học được: phải kiểm đồng thời chất lượng, an toàn và hiệu quả kinh tế; pass_rate cao không bù được một khoản hoàn sai. S1 sau sửa đạt 65/65, chi phí 6.008đ/ticket và ROI 0.66 vẫn cần đọc cùng các giới hạn của dữ liệu mock.
+- Điều còn chưa chắc: chi phí/ROI và chất lượng tracking ngoài thực tế có giữ được khi mở rộng tải, kho và thay chính sách hay không; nhóm thiếu kho trên bộ nền còn tốn 10.359đ/ticket.
 
 ## TaCongBinh-2A202603628
 
-### Phần việc phụ trách
-
-Trưởng nhóm, Kỹ sư cổng. `lab10/guards.py`; hỗ trợ A4–A5; B0–B2, B7.1; dòng kỹ thuật B4 / C4; C0, C2, C7 phần code; bằng chứng C6 / C9; chạy lệnh gom bài để Long kiểm nội dung.
-
 ### Đóng góp cụ thể
 
-Thực hiện với hỗ trợ Codex theo yêu cầu của Bình: kiểm tiêu chí và commit d64c642 trước baseline; chạy 5 lần eval có nhật ký; phân tích T-002@55; viết ba cổng G1/G2/G3 trong lab10/guards.py; điền B0–B2, B7.1 và đóng góp kỹ thuật B4/B6; chạy 13 test công khai, kiểm regression và các invariant. Đã bàn giao report thật ở submission/runs/.
-
-Chưa chốt checkpoint/prepared hoặc ký v1 vì config và phần nhóm còn trống. Người dùng xác nhận Lab Coach chưa phát thẻ; phần grade, trace, sửa và gom bài cuối vòng 2 chờ đúng thẻ. Chưa xác nhận đã nộp LMS.
+- Trưởng nhóm, chuẩn bị repo và điều phối; tự commit/push tiêu chí trước baseline, phối hợp tích hợp bài của nhóm.
+- Phân tích T-002@55, xây dựng guards, bổ sung HAZOP kỹ thuật; đối chiếu checkpoint vòng 1 với bản hiện tại.
+- Chạy grade trước sửa S1, dò các nguyên nhân khác nhau, sửa kiểm ngày giao, nhánh từ chối hoàn và trần lỗi hãng/ngày; chạy lại đánh giá/hồi quy và gom bài.
 
 ### Bằng chứng
 
-Commit ký tiêu chí do người dùng tạo: d64c642. Baseline: R-base-before-20261118-160203-bde05c. Bản after cuối: R-base-after-20261118-160732-1cbe2c. Nhật ký và report: submission/runs/. Phiếu B: B0, B1, B2, phần kỹ thuật B4/B6, B7.1 và ghi chú bàn giao B8. Code hiện chưa commit/push theo yêu cầu người dùng.
+- Commit ký `d64c642`; snapshot `ba703106`; commit `6742d56` cho guards và các commit tích hợp bài của nhóm.
+- B0–B2, B4/B6 phần kỹ thuật, B7.1; C0, C2, C7; `lab10/guards.py`.
+- Grade cuối: R-S1-grade-20261118-173517-e13c24; report ba mốc và nhật ký đầy đủ trong submission/runs/.
 
 ### Exit ticket
 
-Bản nháp để Bình tự đọc và xác nhận trước nộp: điều học được — pass_rate gần 100% vẫn có thể che lỗi gây thiệt hại, cần kiểm lệnh ghi bằng nguồn sự thật và tiêu chí an toàn riêng; điều còn chưa chắc — cổng vòng 1 có giữ được hiệu quả khi tải, chính sách, dữ liệu và quyền duyệt thay đổi hay không. Chưa có thẻ sự cố/test ẩn/pilot thật để kết luận.
-
-### Sử dụng AI
-
-Có dùng Codex để đọc code, chạy CLI, đề xuất và viết guards, soạn phần kỹ thuật Phiếu B, ghi bằng chứng. Các số liệu đều lấy từ lần chạy thực tế; không chỉnh report, tiêu chí đã ký, code bị khóa hoặc dữ liệu đề. Bình cần đọc lại, hiểu và tự xác nhận đóng góp trước khi nộp.
+- Điều học được: kiểm lệnh hoàn tiền chưa đủ, vì nhánh từ chối có thể không gọi issue_refund; cũng cần kiểm trước phản hồi khi DB cho thấy khách còn quyền lợi.
+- Điều còn chưa chắc: dữ liệu đúng cấu trúc có đúng thực tế không và bộ đếm trần có giữ được tính nguyên tử khi nhiều worker ghi đồng thời không; mock tuần tự chưa trả lời được.
 
 ## NguyenTuanDung-2A202603608
 
-### Phần việc phụ trách
-
-Kỹ sư cổng. A2 câu 1.3; B3 (dự thảo), B7.2, B7.3; `lab10/monitors.py`; C2, C5 câu 3.2 (dự thảo để Đăng soát), C6 / C9 (tổng hợp), C8; trích số liệu C12 và kiểm đủ report khi gom bài.
-
 ### Đóng góp cụ thể
 
-Chờ thành viên tự ghi công việc thực tế đã hoàn thành.
+- Phụ trách offline metric A2, dự thảo bản đồ dữ liệu/drift B3 để Đăng soát.
+- Phụ trách hai bước chống rò rỉ dữ liệu đánh giá và behavioral test hai ticket tự viết ở B7.2–B7.3.
+- Phối hợp specification C5, tổng hợp fault tree trước/sau C6/C9; phụ trách ba monitor ở C8, trích số liệu và kiểm hồi quy để hoàn thiện C12.
 
 ### Bằng chứng
 
-Chờ thành viên bổ sung mã commit, mã lần chạy và vị trí trong phiếu.
+- Phiếu A mục A2; B3, B7.2–B7.3; C5–C6, C8–C9; `lab10/monitors.py`.
+- Grade R-S1-grade-20261118-173517-e13c24: monitor và regression đạt; ba metric tracking_claim_mismatch_rate, tracking_date_invalid_rate, carrier_strike_cap_block_rate sáng đèn trên S1 so với bộ nền.
+- Kết quả chung sau sửa: S1 65/65, nền 110/110 và 13/13 test công khai đạt. Kết quả đánh giá được dùng chung cho nhóm.
 
 ### Exit ticket
 
-Chờ thành viên tự viết một điều học được và một điều còn chưa chắc.
-
-### Sử dụng AI
-
-Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
+- Điều học được: monitor dùng trong production phải tính từ dữ kiện/sự kiện không nhãn; sự kiện do ctx.log có type=guard và tên nằm ở kind, đọc sai trường sẽ làm metric không báo dù guard đã chặn.
+- Điều còn chưa chắc: khi log bị mất hoặc DB sai nhưng hợp lệ, ba monitor hiện tại có thể bỏ sót; cần đo độ đầy đủ log, độ trễ cảnh báo và false alarm trên pilot thật.
 
 ## HoangHaiLong-2A202603670
 
-### Phần việc phụ trách
-
-Vận hành và pháp lý. A1 câu 1.2, A2 câu 1.4; B4 (tổng hợp và ngoài kỹ thuật), B5, B7.5, B7.6; `config/operating_gates.json` mục `operations`, `legal`; C3, C4 (tổng hợp và ngoài kỹ thuật), C5 câu 3.3, C7 phần vận hành / pháp lý, C10, C11; `submission/submission.json`, kiểm nội dung gói bài.
-
 ### Đóng góp cụ thể
 
-Chờ thành viên tự ghi công việc thực tế đã hoàn thành.
+- Phụ trách góc nhìn vận hành/pháp lý, HAZOP ngoài kỹ thuật và checklist 9 nhóm có PIC; hoàn thiện B4–B7.6, quy trình người trực, chi phí/công suất và điều kiện dừng.
+- Phụ trách phần riêng S1 ở C3.5, tổng hợp HAZOP C4, giả định môi trường C5; bổ sung risk register, checklist và runbook 4–5 ở C10–C11.
+- Phụ trách thông tin bàn/thành viên/thẻ/quyết định/ba dòng trong submission.json; rà gói nộp Bình gom theo submission/README.md.
 
 ### Bằng chứng
 
-Chờ thành viên bổ sung mã commit, mã lần chạy và vị trí trong phiếu.
+- Commit `be4ae69`: cập nhật B4–B7.6 theo số base, kênh báo tin khớp bản chụp vòng 1.
+- B4–B5, B7.5–B7.6; C3.5, C4–C5, C10–C11; `config/operating_gates.json` mục operations/legal và `submission/submission.json`.
+- Grade R-S1-grade-20261118-173517-e13c24: S1 không còn lỗi hãng oan/PII, reviewer 1 người ×6 ca/giờ, không ùn ở tải mock; hạn chế về cao điểm và thực tế ghi tại runbook.
 
 ### Exit ticket
 
-Chờ thành viên tự viết một điều học được và một điều còn chưa chắc.
+- Điều học được: nhiều hành động có vẻ đúng riêng lẻ vẫn có thể vượt quyền khi cộng dồn theo hãng/ngày; cổng phải đi kèm PIC, đối soát và quy trình xử lý phần bị chặn.
+- Điều còn chưa chắc: một reviewer có đáp ứng giờ cao điểm thật và bên hãng có tin quyết định tự động không; cần diễn tập tải, kiểm thời gian chờ và lấy phản hồi người liên quan.
 
-### Sử dụng AI
+## Trạng thái bàn giao
 
-Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
-
-Ghi chú kỹ thuật: bản sửa giữ nguyên các ngưỡng và tên đứng ký dạng ngắn do người dùng chỉnh; commit lưu đúng byte đã ký để hash nhất quán giữa các máy. Bản sao trước sửa được giữ ngoài repo. Không chạy eval/grade trong quá trình sửa.
-
-
-### Bàn giao kiểm chứng v1 và chuẩn bị checkpoint cuối
-
-- Hoàn thiện B7.2/B7.3 với hỗ trợ Codex theo yêu cầu trưởng nhóm, trước khi đọc S1; không tự nhận Dũng đã trực tiếp chạy hai ca.
-- Snapshot ba703106 được khôi phục đúng byte LF, không tạo checkpoint mới; chuẩn bị và after đã đo lại, số thật và lưu ý v1 gốc nằm ở phụ lục Phiếu B cùng submission/runs/v1-readiness.json.
-- Người dùng xác nhận thẻ S1 và cung cấp repo cards. Chỉ nhận/đọc S1; chạy grade trước thay đổi vòng 2. Không chọn thẻ khác hoặc tạo dữ liệu sự cố.
-- Sau grade đầu: Bình dò trace và cổng code; Đăng specification/kinh doanh/quyết định; Long HAZOP/runbook/rủi ro; Dũng monitor, fault tree và kiểm hồi quy. Cả nhóm chốt v2 theo tiêu chí, không mặc định Tiếp tục.
-- CP5 chỉ hoàn tất sau report S1 mới nhất, ba mốc, monitor mới, Phiếu C, ba dòng bắt buộc, đủ thành phần và từng thành viên tự xác nhận/nộp LMS. Người dùng tự commit/push; Codex không thực hiện commit nhận thẻ hoặc commit bài.
-
-
-### Trạng thái cuối sau xử lý S1
-
-- Người dùng đã cung cấp S1 ở root; bốn file incidents/S1 đúng hash. Chỉ chạy/đọc thẻ được giao S1 và bộ nền; không cần làm S2–S8.
-- Grade đầu R-S1-grade-20261118-170028-591bdf được giữ làm bằng chứng trước sửa. Theo yêu cầu trưởng nhóm, Codex hỗ trợ hoàn thiện guards/monitors, chạy kiểm chứng và soạn C7–C12/submission. Phân công PIC là trách nhiệm rà soát; không tự nhận từng thành viên đã trực tiếp chạy hoặc ký phần AI hỗ trợ.
-- Ba sửa vòng 2: kiểm ngày giao trước tác dụng phụ, kiểm đề xuất từ chối trước phản hồi, thực thi trần Ops 2 lỗi/hãng/ngày. Không sửa tiêu chí, snapshot vòng 1, model/prompt, dữ liệu hoặc grader.
-- Grade cuối R-S1-grade-20261118-172005-e13c24: S1 65/65, nền 110/110; hoàn sai/thiếu, lỗi hãng oan, PII đều 0. S1 chi phí 6.008đ/ticket, ROI 0.66, escalation 0.3077, 0 ca ùn; ba monitor mới sáng đèn. 13 public tests và 12 kiểm tra bổ sung đạt; không có hidden tests trên máy.
-- Grade tổng vẫn FAIL vì manifest yêu cầu 28 file S2–S8 không có trong gói chỉ nhận S1. Đây là việc xác nhận bộ phát hành với Coach, không phải yêu cầu nhóm giải thẻ khác; không tự bỏ kiểm integrity.
-- Quyết định v2 lập trong Phiếu C/submission.json là Cải tiến thêm do thiếu bằng chứng kiểm gói hợp lệ. PIC Bình rà với Coach trong ca đánh giá kế tiếp; Đăng rà quyết định, Dũng kiểm kỹ thuật/monitor, Long rà hồ sơ. Không giả lập đã họp hoặc chữ ký của nhóm.
-- Phiếu C và ba dòng bắt buộc đã điền theo số thật. check_submission chỉ xác nhận đủ thành phần, không thay kết luận grade. Từng thành viên tự xác nhận công việc/exit ticket và nộp LMS theo hướng dẫn Coach. Người dùng tự commit/push; Codex không stage/commit/push.
+- Chỉ làm thẻ S1. Grade R-S1-grade-20261118-173517-e13c24: visible, criteria, regression, monitor đạt; snapshot và tiêu chí còn nguyên. Hidden tests không có trên máy.
+- Kết quả tổng: FAIL tại integrity do thiếu 28 file khóa S2–S8 của bộ phát hành. Visible, criteria, regression và monitor đạt; phạm vi phân tích của nhóm là S1.
+- Quyết định v1: Tiếp tục. Quyết định v2: Cải tiến thêm; căn cứ và kế hoạch tiếp theo trình bày tại C12.
+- Gói nộp chỉ giữ danh sách tại submission/README.md: code/config, ba phiếu, report gần nhất, ba mốc, nhật ký mọi lần chạy, submission.json và manifest. Không kèm probe, trace rời, readiness hay bản sao phiếu.

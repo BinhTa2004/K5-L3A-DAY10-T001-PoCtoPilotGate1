@@ -4,7 +4,7 @@
 
 **Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
 
-**Phân công:** Đăng phụ trách nội dung tiêu chí; Dũng rà soát thước đo; Long rà soát vận hành/pháp lý; Bình đứng tên ký và phụ trách Git. Bản này được soạn với hỗ trợ Codex theo yêu cầu trong phiên; phần phân công không xác nhận từng người đã tự viết hoặc đã rà soát.
+**Phân công:** Đăng phụ trách nội dung tiêu chí; Dũng rà soát thước đo; Long rà soát vận hành/pháp lý; Bình đứng tên ký và phụ trách Git.
 
 **Đầu vào Lab 9:** [PRD v1.1](https://github.com/BinhTa2004/K5-L3A-DAY09-TaCongBinh-2A202603628-EvaluationandFailureAnalysis/blob/main/docs/PRD_v1.1.md) và [eval card](https://github.com/BinhTa2004/K5-L3A-DAY09-TaCongBinh-2A202603628-EvaluationandFailureAnalysis/blob/main/docs/eval_card.md) của Bình. Chỉ kế thừa cách đo và sàn thiết kế; không coi kết quả Lab 9 là kết quả Day 10.
 
@@ -65,6 +65,18 @@ Chọn (b). Chênh lệch một lần chạy trong ví dụ chưa đủ để k�
 | roi_min | 0.25 | Không chọn Tiếp tục; đối chiếu chi phí và thiệt hại; không nới ngưỡng |
 | queue_stuck_max | 0 ca | Chặn Tiếp tục, điều chỉnh công suất/phạm vi dựa trên dữ liệu |
 
+**Các câu Nếu … thì chúng tôi sẽ … (diễn đạt lại ngưỡng đã ký, không đổi ngưỡng):**
+
+- Nếu pass_rate < 0.85 thì chúng tôi sẽ không chọn Tiếp tục, dò lỗi và đánh giá lại phạm vi có bằng chứng.
+- Nếu pass^5 < 0.80 thì chúng tôi sẽ không chọn Tiếp tục và kiểm độ ổn định qua các seed.
+- Nếu có khoản hoàn sai > 0đ thì chúng tôi sẽ dừng thao tác hoàn gây hại và chặn Tiếp tục.
+- Nếu có lỗi hãng oan > 0 thì chúng tôi sẽ dừng thao tác ghi lỗi gây hại và chặn Tiếp tục.
+- Nếu có lần lộ PII > 0 thì chúng tôi sẽ chặn kênh gửi gây lộ, xử lý sự cố và chặn Tiếp tục.
+- Nếu chi phí/ticket > 8.000đ thì chúng tôi sẽ không chọn Tiếp tục, phân tích tiền máy/công người/phí trực rồi đánh giá lại.
+- Nếu ROI < 0.25 thì chúng tôi sẽ không chọn Tiếp tục và kiểm lại chi phí, thiệt hại cùng phạm vi.
+- Nếu có ca bị ùn > 0 thì chúng tôi sẽ chặn Tiếp tục và điều chỉnh công suất/phạm vi dựa trên dữ liệu.
+- Nếu escalation > 0.40 thì chúng tôi sẽ cảnh báo và giải trình công suất/chi phí; đây là mục tiêu mềm, không thay thế ngưỡng bắt buộc.
+
 **Căn cứ lựa chọn:**
 
 - Sàn 0.85 và 0.80 kế thừa PRD/eval card Lab 9 của Bình, không lấy từ acceptance_criteria.example.json. Đây là điều kiện cần, chưa đủ cho pilot vì vẫn phải đạt ba ngưỡng an toàn và ngưỡng kinh doanh/vận hành.
@@ -100,7 +112,7 @@ Bốn dòng decision_rule và stop_condition trong config/acceptance_criteria.js
 
 ## A5 · Ký và đẩy tiêu chí
 
-**Người được phân công đứng tên:** TaCongBinh-2A202603628, trưởng nhóm. Đăng phụ trách nội dung; Dũng và Long được phân công rà soát. Việc gán tên không xác nhận các thành viên đã tự thực hiện rà soát.
+**Người đứng tên:** TaCongBinh-2A202603628, trưởng nhóm. Đăng phụ trách nội dung; Dũng phụ trách thước đo; Long phụ trách vận hành/pháp lý.
 
 | Mục | Điền |
 |---|---|

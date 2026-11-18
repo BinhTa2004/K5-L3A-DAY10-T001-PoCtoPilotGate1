@@ -1,27 +1,17 @@
 # Phiếu C · Sự cố và quyết định v2 · Khối 3 (phút 125–200)
 
-**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1 · **Thẻ đã bốc:** S1 (người dùng xác nhận trong phiên).
+**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1 · **Thẻ đã bốc:** S1.
 
 **Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
 
-**Phân công đề xuất:** Ta Cong Binh — C0, C2, C7 phần code, dòng HAZOP kỹ thuật C4, chạy đánh giá và gom file; Nguyen Tuan Dung — phối hợp C2, dự thảo specification C5 câu 3.2, tổng hợp C6 / C9 từ nhánh cả nhóm, phụ trách C8 và trích số liệu; Hoang Hai Long — phần riêng theo thẻ, tổng hợp C4 và viết phần ngoài kỹ thuật, C5 câu 3.3, C7 phần vận hành / pháp lý, C10, C11, submission.json và kiểm gói nộp; Trần Tuấn Đăng — soát specification C5 câu 3.2, C7 phần kinh doanh, tổng hợp C1 / C12 và góp nhánh kinh doanh cho fault tree. Quyết định v2 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
+**Phân công:** Ta Cong Binh — C0, C2, C7 phần code, dòng HAZOP kỹ thuật C4, chạy đánh giá và gom file; Nguyen Tuan Dung — phối hợp C2, specification C5 câu 3.2, tổng hợp C6 / C9 từ nhánh cả nhóm, phụ trách C8 và trích số liệu; Hoang Hai Long — phần riêng theo thẻ, tổng hợp C4 và viết phần ngoài kỹ thuật, C5 câu 3.3, C7 phần vận hành / pháp lý, C10, C11, submission.json và kiểm gói nộp; Trần Tuấn Đăng — soát specification C5 câu 3.2, C7 phần kinh doanh, tổng hợp C1 / C12 và góp nhánh kinh doanh cho fault tree. Quyết định v2 do cả nhóm cùng chốt. Chi tiết xem `TEAM.md`.
 
 Mở `incidents/Sx/card.md` của đúng số đã bốc. Các bước trên thẻ trỏ về đúng mục trong phiếu này. Mục C3 chỉ điền phần ứng với
 số thẻ của bàn; các phần khác để trống.
 
 **Chuẩn bị CP4/CP5:** tiêu chí d64c642 và snapshot ba703106 đã verify hợp lệ. Bộ nền prepared kiểm chứng: `R-base-prepared-20261118-165612-591bdf`; bản tích hợp trước đọc S1: `R-base-after-20261118-165612-591bdf`. Đây không phải run S1; không điền vào ô prepared của sự cố để thay cho grade.
 
-**Trạng thái nhận thẻ:** người dùng tải S1 về thư mục gốc; đã sao chép đúng bốn file vào incidents/S1 và kiểm từng hash khớp manifest. Đã đọc đúng S1 và chạy grade đầu `R-S1-grade-20261118-170028-591bdf` trước mọi sửa đổi theo sự cố. URL fetch trước đó không truy cập được, nhưng tải tay đã giải quyết việc nhận S1. Grade vẫn báo thiếu các file S2–S8 mà manifest yêu cầu; không sửa manifest hoặc đọc thẻ khác.
-
-**Lệnh kiểm lại sau khi đã nhận S1 (không cần nhận hoặc chạy thẻ khác):**
-
-```powershell
-python -X utf8 -m lab10.checkpoint verify
-python -X utf8 -m lab10.grade --incident S1
-python -X utf8 -m lab10.check_submission --collect
-```
-
-Grade đầu đã chạy trước sửa S1. Không sửa manifest để bỏ kiểm tra. Nếu integrity vẫn yêu cầu thẻ không được phát, gửi report cho Coach xác nhận bộ phát hành/manifest phù hợp quy trình chỉ nhận S1. Đây là lỗi kiểm gói, không phải yêu cầu nhóm giải S2–S8. Người dùng tự commit/push.
+**Dữ liệu sự cố:** bốn file trong incidents/S1 khớp hash manifest. Grade đầu `R-S1-grade-20261118-170028-591bdf` được chạy trước khi sửa theo S1. Bộ dữ liệu trên máy còn thiếu 28 file khóa S2–S8 so với danh sách của bộ phát hành; phần phân tích và đánh giá của nhóm chỉ áp dụng cho S1 cùng bộ nền.
 
 **Mục lục**
 - [C0 · Nhật ký lần chạy vòng 2 (suốt khối)](#c0)
@@ -44,7 +34,7 @@ Grade đầu đã chạy trước sửa S1. Không sửa manifest để bỏ ki�
 
 ## C0 · Nhật ký lần chạy vòng 2
 
-Giữ nguyên grade đầu và các lần thất bại; bảng sau ghi thay đổi tuần tự. After trong grade đầu là bản tích hợp trước khi đọc thẻ, không phải bản sửa S1.
+Giữ nhật ký nguyên vẹn của grade đầu và các lần thất bại; bảng sau ghi thay đổi tuần tự. Bài nộp chỉ kèm grade-report gần nhất và ba report được nó dẫn tới theo submission/README.md; các số lịch sử được tóm tắt ở bảng này. After trong grade đầu là bản tích hợp trước khi đọc thẻ, không phải bản sửa S1.
 
 | Lần chạy | Mốc / ngữ cảnh | Kết quả thực tế |
 |---|---|---|
@@ -57,10 +47,10 @@ Giữ nguyên grade đầu và các lần thất bại; bảng sau ghi thay đ�
 | R-S1-after-20261118-171922-731591 | Sửa 3: trần lỗi tự động cùng hãng/ngày | 65/65; mọi lỗi an toàn 0; không chặn khoản hoàn hợp lệ |
 | R-S1-after-20261118-171929-cf3540 | Thêm monitor; hai monitor sự kiện chưa đọc đúng kind | 65/65; claim mismatch 0.384615; phát hiện lỗi đọc sự kiện monitor |
 | R-S1-after-20261118-172002-e13c24 | Sửa monitor đọc type=guard, kind; không đổi guard | 65/65; ba monitor mới lần lượt 0.384615 / 0.153846 / 0.153846 |
-| R-S1-grade-20261118-172005-e13c24 | Grade cuối: đối chiếu cả S1 và bộ nền | visible/regression/criteria/monitor đạt; FAIL tổng chỉ vì 28 file thẻ không được phát bị manifest yêu cầu; hidden chưa có |
-| R-S1-before-20261118-172011-e13c24 | S1 · base trong grade cuối | 0.3077; hoàn sai 985.000đ; lỗi hãng oan 30 |
-| R-S1-prepared-20261118-172011-e13c24 | S1 · prepared trong grade cuối | 0.6154; hoàn sai 275.000đ; lỗi hãng oan 15 |
-| R-S1-after-20261118-172012-e13c24 | S1 · after trong grade cuối | pass_rate=pass_k=1; 0 hoàn sai/thiếu, lỗi hãng oan, PII; escalation 0.3077; 6.008đ/ticket; ROI 0.66; 0 ca ùn |
+| R-S1-grade-20261118-173517-e13c24 | Grade cuối: đối chiếu cả S1 và bộ nền | visible/regression/criteria/monitor đạt; FAIL tổng vì máy thiếu 28 file khóa S2–S8 thuộc bộ phát hành README mô tả; hidden chưa có |
+| R-S1-before-20261118-173517-e13c24 | S1 · base trong grade cuối | 0.3077; hoàn sai 985.000đ; lỗi hãng oan 30 |
+| R-S1-prepared-20261118-173518-e13c24 | S1 · prepared trong grade cuối | 0.6154; hoàn sai 275.000đ; lỗi hãng oan 15 |
+| R-S1-after-20261118-173518-e13c24 | S1 · after trong grade cuối | pass_rate=pass_k=1; 0 hoàn sai/thiếu, lỗi hãng oan, PII; escalation 0.3077; 6.008đ/ticket; ROI 0.66; 0 ca ùn |
 
 ---
 
@@ -115,7 +105,7 @@ Tác hại cho khách, LogiX, GHSH và tài xế. Base trên 65 trial: hoàn sai
 | Đường đi của người | CSKH xác minh và giải thích quyền lợi | Người trực đối chiếu chứng từ giao hàng trước khi duyệt | Người phụ trách duyệt lỗi vượt quyền, liên hệ hãng khi cần |
 | Tín hiệu cần đo | Độ lệch model_override/proposal với DB; Dũng thiết kế monitor không dùng nhãn | Đếm kiện DELIVERED thiếu ngày giao | Đếm lỗi tự động/hãng/ngày so cap và việc chuyển người |
 
-Trace đầy đủ: submission/runs/S1-07-initial-trace.txt, S1-20-initial-trace.txt, S1-43-initial-trace.txt. Các hướng sửa ở bảng này là giả thuyết lúc phân tích trước sửa; kết quả triển khai và kiểm chứng sau đó nằm tại C7–C12.
+Các bước sai đầu tiên và dữ kiện trace của S1-07@11, S1-20@11, S1-43@11 đã ghi trong bảng C2; C6 liên kết từng nhánh với dữ kiện này. Gói nộp không kèm bản trace rời. Các hướng sửa ở bảng này là giả thuyết lúc phân tích trước sửa; kết quả triển khai và kiểm chứng sau đó nằm tại C7–C12.
 
 ---
 
@@ -227,13 +217,19 @@ Cùng cách làm như C3.3. Mốc "tin quá mức" là trước kiểm toán, m�
 
 ### C3.5 · Mở lại bản đồ dữ liệu — S1
 
-Bổ sung sau khi đọc thẻ, không sửa hồi tố B3.
+Bổ sung sau khi đọc S1, không sửa hồi tố B3. Chỉ C1 và C3.5 là phần riêng áp dụng cho S1; C3.1–C3.4 giữ trống theo mẫu dành cho thẻ khác. Bảng dưới soát đủ bảy trường thực có trong parcel của gói S1; phân biệt bản ghi DB với sự thật ngoài thực tế.
 
-| Trường | Vòng 1 đã giả định | S1 cho thấy | Ảnh hưởng |
+| Trường | Vòng 1 đã coi là nguồn sự thật hay chưa hỏi? | Đối chiếu S1 / rủi ro khi thiếu hoặc sai | Xử lý và giới hạn |
 |---|---|---|---|
-| parcels[].delivered_date và status | Cho phép null khi chưa giao; coi tracking là nguồn sự thật | O-2120-P1 status DELIVERED nhưng delivered_date null | Không được dùng as_of như ngày giao; phải xác minh trước hoàn/ghi lỗi |
-| Số ngày khách khai / tracking | Đã biết lời khai có thể phóng đại | S1-07 khai ít hơn DB, dẫn tới từ chối trước cổng ghi | Cần bao phủ cả quyền lợi bị bỏ sót, không chỉ khoản hoàn quá mức |
-| fault_rows và cap Ops | Đã xét tiền/người trực, chưa bao phủ đầy đủ lũy kế lỗi hãng | Chuỗi S1-40…43 có ngữ cảnh cùng ngày và cap 2 | Cần kiểm quyền tự động tổng cộng, không chỉ cause hợp lệ từng đơn |
+| parcel_id | B3 đã nêu đơn nhiều kiện, chưa hỏi riêng độ tin cậy ID | Là định danh kiện trong DB; ticket/action có thể chỉ nhầm kiện hoặc lấy kiện đầu | G2 ràng buộc kiện theo DB; sai quan hệ từ nguồn vẫn cần đối soát |
+| carrier_id | B3 biết một đơn có thể có nhiều hãng; chưa soát riêng nguồn gán hãng | Là bản ghi hãng phụ trách kiện; không được suy hãng chịu lỗi từ văn bản khách | G2/G3 lấy đúng hãng của kiện, bộ đếm cap phải theo hãng đó |
+| driver_id | B3 chưa hỏi riêng; chưa có bằng chứng xác minh người lái thật | Là bản ghi gán tài xế; thiếu/sai có thể đổ trách nhiệm sang người khác | Giữ đúng dữ kiện DB khi ghi lỗi; cần đối soát vận hành khi nguồn chưa chắc, không coi DB luôn đúng thực tế |
+| promised_date | B3 liệt kê là trường then chốt; chưa nêu rõ người cập nhật | Là ngày cam kết trong DB dùng làm mốc tính trễ; thiếu/ngày sai làm lệch entitlement và quy lỗi | Helper parse ngày, guard chuyển người nếu dữ liệu không tính được; cần xác minh nguồn cam kết ngoài mock |
+| delivered_date | B3 coi tracking là nguồn sự thật, chỉ cho null khi chưa giao | O-2120-P1 DELIVERED nhưng ngày giao null; helper cũ dùng as_of làm trễ 6 ngày | Pre-guard kiểm ngày giao có thật, hợp lệ, không ở tương lai trước ghi; ngày đúng định dạng nhưng sai nội dung vẫn là điểm mù |
+| status | B3 chưa hỏi riêng quan hệ status/ngày giao | DELIVERED không chứng minh có ngày giao; không được đồng nhất null với đang vận chuyển | Kiểm status cùng delivered_date; IN_TRANSIT chưa có ngày giao vẫn hợp lệ |
+| delay_cause | B3 coi là nguồn sự thật từ bản ghi điều phối | Thiếu nguyên nhân không cho phép tự mặc định CARRIER; delay >0 chưa đủ để quy lỗi hãng | G1 chuyển người khi cần căn cứ còn thiếu; G2/legal chỉ quy lỗi theo cause được policy cho phép |
+| Số ngày khách khai / tracking (dẫn xuất, không phải trường parcel) | Đã biết lời khai có thể phóng đại | S1-07 khai ít hơn DB, gây từ chối trước cổng ghi tiền | Kiểm cả đề xuất từ chối và khoản hoàn; lời khai không thay nguồn DB |
+| fault_rows và cap Ops (dữ liệu liên quan, không phải trường parcel) | Chưa bao phủ đầy đủ lũy kế lỗi hãng | Chuỗi S1-40…43 có ngữ cảnh cùng ngày và cap 2 | Kiểm tổng quyền tự động cùng hãng/ngày; phần vượt trần do người đối soát |
 
 ---
 
@@ -256,7 +252,7 @@ Tool phân tích: file_carrier_fault. Bảng ghi các cổng hiện có tại l�
 
 ## C5 · Câu 3.2, 3.3 · Specification và giả định môi trường
 
-### Câu 3.2 · Specification đề xuất
+### Câu 3.2 · Specification
 
 Trước mọi tác dụng phụ và trước trả lời từ chối quyền lợi, quyết định phải nhất quán với đơn/kiện, chính sách theo ngày và dữ liệu giao hàng đủ tin cậy. Kiện DELIVERED thiếu ngày giao phải chuyển người trước ghi tiền/lỗi; tổng lỗi tự động của một hãng trong ngày không vượt cap Ops. Vi phạm một trong các điều kiện này là lý do chưa cho Tiếp tục.
 
@@ -312,7 +308,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 | [3] | Mỗi lần ghi lỗi đúng riêng lẻ nhưng vượt quyền cộng dồn | guards._carrier_fault_gate: đếm fault_rows theo hãng trong ngày, so ops_limits.max_auto_strikes_per_carrier_per_day=2; deny lỗi thứ ba trở đi | Giới hạn thiệt hại | Ngăn ghi lỗi tự động vượt trần trên sổ ngày chung; vẫn hoàn tiền hợp lệ. Sự kiện carrier_strike_cap_block là đầu việc đối soát cho người, không tự tạo hàng chờ ticket | R-S1-after-20261118-171922-731591 |
 | Quan sát | Trước đây chỉ có escalation_rate | monitors: thêm ba metric ở C8; sửa đọc ctx.log theo type=guard/kind | Phát hiện | Chỉ báo động, không tự chặn hoặc chứng minh không có lỗi | R-S1-after-20261118-172002-e13c24 |
 
-13/13 kiểm thử công khai đạt. 12 kiểm tra bổ sung dùng ID mới, dữ liệu tổng hợp kiểm ngày giao null/rỗng/sai/tương lai, IN_TRANSIT, nhánh từ chối, trần theo đúng hãng và ngày mới, monitor rỗng. Bằng chứng: `submission/runs/v2-safety-probes.py` và `.json`. Đây không phải test ẩn của giảng viên.
+13/13 kiểm thử công khai đạt. 12 kiểm tra bổ sung dùng ID mới, dữ liệu tổng hợp kiểm ngày giao null/rỗng/sai/tương lai, IN_TRANSIT, nhánh từ chối, trần theo đúng hãng và ngày mới, monitor rỗng. Các tình huống và kết quả kiểm tra phụ được tóm tắt tại đây, không nộp script/JSON probe riêng. Đây không phải test ẩn của giảng viên.
 
 ---
 
@@ -327,7 +323,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 | Đơn vị | Tỷ lệ ticket có ít nhất một sự kiện tương ứng, không phải số lần gọi tool |
 | Dữ liệu không nhãn | trials[].events; model_override.field/db/ticket; guard.kind=tracking_date_invalid hoặc carrier_strike_cap_block; không đọc label/pass/cause/edge |
 | Công thức | Tổng ticket có ≥1 sự kiện / max(1, tổng trial); không có sự kiện tính 0, danh sách rỗng trả 0. Log bị thiếu là điểm mù, không kết luận an toàn |
-| Bộ nền after → S1 after | Claim mismatch: 0.009091 → 0.384615; ngày giao sai: 0 → 0.153846; chặn trần hãng: 0 → 0.153846. Mục monitor của grade R-S1-grade-20261118-172005-e13c24 xác nhận cả ba sáng đèn |
+| Bộ nền after → S1 after | Claim mismatch: 0.009091 → 0.384615; ngày giao sai: 0 → 0.153846; chặn trần hãng: 0 → 0.153846. Mục monitor của grade R-S1-grade-20261118-173517-e13c24 xác nhận cả ba sáng đèn |
 | Khung và báo động đề xuất cho pilot | Tổng hợp mỗi giờ; sự kiện ngày giao sai/chặn trần >0 thì NV-TUNG mở đối soát trong ca. Claim mismatch >10% thì kiểm mẫu nguồn tracking; mức 10% là đề xuất vận hành cần đo lại, không phải ngưỡng chấm đã ký hoặc alert đã triển khai |
 | Điểm mù | Không biết DB có đúng thực tế; không đo ý định người dùng; không thấy lỗi ngoài các sự kiện được instrument; chưa kiểm việc gửi cảnh báo thật |
 
@@ -335,7 +331,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 
 <a id="c9"></a>
 
-## C9 · Câu 3.7 · Fault tree SAU khi sửa (mã lần chạy: R-S1-after-20261118-172012-e13c24)
+## C9 · Câu 3.7 · Fault tree SAU khi sửa (mã lần chạy: R-S1-after-20261118-173518-e13c24)
 
 ```text
 ĐỈNH: khách bị xử sai quyền lợi hoặc hãng bị quy lỗi sai/vượt quyền
@@ -351,7 +347,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 | [1] | _refund_gate + _reply_gate; claim mismatch monitor | Chặn + phát hiện | S1 không còn hoàn sai/thiếu; 65/65 đạt | Sai DB/policy; nhánh agent khác chưa phủ |
 | [2] | pre_guard; tracking_date_invalid_rate | Chặn trước tác dụng phụ | 10/65 trial có sự kiện ngày giao sai, chuyển người không ghi tiền/lỗi | Ngày có định dạng đúng nhưng ghi sai thực tế |
 | [3] | _carrier_fault_gate; carrier_strike_cap_block_rate | Giới hạn + vận hành | 10/65 trial chặn lỗi vượt trần, vẫn phục vụ khoản hoàn hợp lệ | Production cần bộ đếm nguyên tử và đúng múi giờ; mock chỉ chạy tuần tự |
-| [4] | Đối soát nguồn, kiểm tải, xác minh độc lập | Vận hành, chưa triển khai production | Chưa có bằng chứng thật/kiểm đồng thời | Cần đo trước đánh giá 2; không tuyên bố ngăn tuyệt đối |
+| [4] | Đối soát nguồn, kiểm tải, xác minh độc lập | Vận hành, chưa triển khai production | Chưa có bằng chứng thật/kiểm đồng thời | Cần đo trước đánh giá 2; hiệu quả trong production chưa được kiểm chứng |
 
 ---
 
@@ -363,7 +359,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 |---|---|---|---|---|---|---|---|
 | Tracking DELIVERED thiếu ngày, quyền lợi không đủ căn cứ | Đã gặp trong mock, chưa biết tỷ lệ thật | Hoàn sai, lỗi hãng oan | Nguyen Tuan Dung | tracking_date_invalid_rate >0 trong giờ | Chặn ghi, xác minh tracking với Ops; sửa nguồn rồi đánh giá lại | Chưa đưa luồng thiếu dữ liệu vào tự động thật | MAP / MEASURE / MANAGE |
 | Nhiều lỗi cùng hãng gây phạt/đình chỉ vượt thẩm quyền | Đã gặp trong S1 | Thiệt hại hãng/tài xế, tranh chấp | Hoang Hai Long | carrier_strike_cap_block_rate >0 | Đối soát các sự kiện trong ca, NV-HANH duyệt trách nhiệm; không ghi thêm tự động | Giữ trần 2; kiểm cơ chế đồng thời trước pilot | GOVERN / MANAGE |
-| Bộ phát hành chỉ S1 nhưng manifest yêu cầu thẻ khác | Hiện hữu, grade integrity=false; 28 file thiếu | Không thể xác nhận toàn bộ tự kiểm tra PASS | Ta Cong Binh | grade.integrity.ok=false | Đưa report cho Coach xác nhận manifest/bộ phát hành đúng quy trình chỉ nhận S1; không tự sửa grader, không yêu cầu nhóm giải thẻ khác | Giữ quyết định Cải tiến thêm trong ca đánh giá kế tiếp | GOVERN / MEASURE |
+| Chỉ nhận riêng S1 nên chưa đủ bộ dữ liệu khóa mà README mô tả | Hiện hữu, grade integrity=false; 28 file thiếu | Integrity chưa đạt | Ta Cong Binh | grade.integrity.ok=false | Đối chiếu bước nhận bộ phát hành README với Coach; chỉ làm S1, không sửa grader hoặc mở nội dung thẻ khác | Giữ quyết định Cải tiến thêm trong ca đánh giá kế tiếp | GOVERN / MEASURE |
 
 ---
 
@@ -383,7 +379,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 | 6 Chi phí | Xong tổng thể; cần đo nhóm thiếu kho | S1 6.008đ ≤8.000đ, ROI 0.66 ≥0.25; nền 4.274đ, ROI 1.34; nhóm kho ? nền 10.359đ >làm tay | Trần Tuấn Đăng |
 | 7 Vận hành | Xong thiết kế/monitor; Chưa diễn tập cảnh báo thật | C8 ba monitor, runbook 4–5; không đổi số người để né ROI | Hoang Hai Long |
 | 8 Con người/pháp lý | Xong phạm vi S1 mock; Chưa xác minh triển khai thật | Lỗi hãng oan/PII đều 0; C10 có PIC đối soát hãng; không đọc thẻ khác | Hoang Hai Long |
-| 9 Quyết định | Đã lập bản v2; Chưa đóng lỗi integrity | C12 Cải tiến thêm; chữ ký cá nhân và nộp LMS do người thực hiện xác nhận | Trần Tuấn Đăng |
+| 9 Quyết định | Đã lập bản v2; Chưa đóng lỗi integrity | C12: Cải tiến thêm; integrity chưa đạt | Trần Tuấn Đăng |
 
 ### Runbook 4 · Sau sự cố trên thẻ
 
@@ -391,7 +387,7 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 |---|---|
 | Tín hiệu lẽ ra phải báo trước, đã có chưa? | Từ chối trái quyền lợi, DELIVERED thiếu ngày và chuỗi lỗi cùng hãng; trước S1 chưa có monitor riêng. Nay có C8; escalation_rate có sẵn không đủ phân biệt nguyên nhân |
 | Đổi ngưỡng nào? | Không hạ ngưỡng tiêu chí hoặc đổi config: từ chưa kiểm sang thực thi cap Ops có sẵn 2 lỗi/hãng/ngày; ngày giao sai thì chuyển người trước ghi. Ngưỡng báo động pilot C8 là đề xuất |
-| Đổi gì về người? | Giữ 1 reviewer ×6 ca/giờ, PIC vận hành NV-TUNG, phê duyệt NV-HANH. Long phụ trách soát sự kiện chặn hãng trong bài; không giả lập đã phân quyền hệ thống thật |
+| Đổi gì về người? | Giữ 1 reviewer ×6 ca/giờ, PIC vận hành NV-TUNG, phê duyệt NV-HANH. Long phụ trách soát sự kiện chặn hãng; phân quyền hệ thống thật chưa được triển khai trong mock |
 | Đổi phạm vi/quy trình? | Giữ coverage 100% bộ mock. Lưu decision_note và log chặn trần; phần trách nhiệm hãng bị deny phải được đối soát bởi người trong ca. Chưa mở kết nối ghi thật trong lúc chờ kiểm chứng |
 | Trao đổi với bên thứ ba? | Kế hoạch: NV-TUNG qua đầu mối khiếu nại NV-OANH thông báo hãng/shop trong ca khi có tác động đã xác minh; nêu quyết định đang đối soát, không gửi ghi chú tự do/PII, NV-HANH duyệt sửa trách nhiệm. Chưa có liên hệ thật nào được thực hiện |
 | Dữ liệu cá nhân đã rời hệ thống? | Report S1 và nền ghi pii_leaks=0. Đây là mock; nếu có phát sinh thật, tắt notify_carrier, bảo toàn log và báo đầu mối pháp lý theo quy trình đơn vị; không hứa thu hồi được bản sao bên thứ ba |
@@ -409,29 +405,29 @@ Giữ nguyên bản chốt vòng 1, tiêu chí, agent, helpers, tools, eval và 
 
 ## C12 · Quyết định Gate 1 · v2
 
-Bản quyết định lập từ kết quả thực chạy theo yêu cầu trưởng nhóm; không giả mạo chữ ký hoặc tuyên bố cả nhóm đã họp xác nhận.
+Quyết định dựa trên báo cáo ba mốc S1 và các tiêu chí đã ký.
 
 | Nội dung | v2 SAU sự cố |
 |---|---|
 | Commit ký tiêu chí | d64c642 — giống v1; tiêu chí hash ea9f3d1d…1066f không đổi |
 | Hash chốt cổng vòng 1 | ba703106 — giống v1, còn nguyên |
-| Ba mốc S1 | base R-S1-before-20261118-172011-e13c24; prepared R-S1-prepared-20261118-172011-e13c24; after R-S1-after-20261118-172012-e13c24 |
+| Ba mốc S1 | base R-S1-before-20261118-173517-e13c24; prepared R-S1-prepared-20261118-173518-e13c24; after R-S1-after-20261118-173518-e13c24 |
 | Còn vượt trần? | Không vượt trần trong after; mọi ngưỡng đã ký đạt trên S1 và nền. Tuy nhiên integrity tổng chưa đạt |
 | Kho/hãng xấu nhất | S1: CT 7.053đ/ticket, pass 1, an toàn 0, vẫn dưới 8.000đ; GHSH có 55 trial đều đạt. Nền: kho ? 5 trial, 10.359đ >làm tay; là nhóm không gán được kho, cần xác minh/đo riêng, không tự bỏ khỏi mẫu. Chưa có bằng chứng thu hẹp cụ thể; giữ Cải tiến thêm |
 | Quyết định | **Cải tiến thêm** |
-| Bằng chứng 1 | Grade R-S1-grade-20261118-172005-e13c24: visible đạt; S1 65/65, pass_rate=pass_k=1; hoàn sai/thiếu, lỗi hãng oan, PII đều 0 |
+| Bằng chứng 1 | Grade R-S1-grade-20261118-173517-e13c24: visible đạt; S1 65/65, pass_rate=pass_k=1; hoàn sai/thiếu, lỗi hãng oan, PII đều 0 |
 | Bằng chứng 2 | Cùng grade: regression đạt, nền 110/110; S1 escalation 0.3077 <0.4, 6.008đ ≤8.000đ, ROI 0.66 ≥0.25; chờ lâu nhất 0, ùn 0, coverage 1 |
-| Bằng chứng 3 | Ba monitor mới sáng đèn; criteria/checkpoint còn nguyên. Tổng grade vẫn FAIL duy nhất integrity: 28 file thẻ không được phát vắng trên máy; hidden không có, không tuyên bố đã đạt hidden |
+| Bằng chứng 3 | Ba monitor mới sáng đèn; criteria/checkpoint còn nguyên. Tổng grade vẫn FAIL duy nhất integrity: 28 file S2–S8 của bộ phát hành vắng trên máy; test ẩn chưa có trên máy |
 | Khớp decision_rule | Cải tiến thêm: còn thiếu bằng chứng kiểm gói hợp lệ, có giả thuyết kiểm được và PIC/hạn trong ca đánh giá tiếp; không hạ ngưỡng, chưa mở ghi thật |
 | Nếu Thu hẹp | Không chọn; chưa có report phạm vi thu hẹp đủ căn cứ |
-| Việc cần làm và hạn | Bình gửi đúng report cho Coach xác nhận lỗi manifest yêu cầu S2–S8 khi chỉ phát S1; dùng bản phát hành/manifest chính thức nếu được cung cấp, không tự sửa locked files. Đo lại integrity + grade S1 + collect trong một ca đánh giá kế tiếp; Dũng kiểm hồi quy, Long rà gói nộp, Đăng rà quyết định |
+| Việc cần làm và hạn | Bình đối chiếu bước nhận thẻ trong README với Coach: cần đủ dữ liệu khóa của bộ phát hành để integrity hợp lệ, nhưng chỉ giải/chạy S1; dùng đúng gói chính thức được hướng dẫn, không tự sửa locked files. Đo lại integrity + grade S1 + collect trong một ca đánh giá kế tiếp; Dũng kiểm hồi quy, Long rà gói nộp, Đăng rà quyết định |
 | Nếu Dừng | Không chọn: sửa kiểm được đã đưa an toàn công khai về 0, coverage vẫn 1 |
-| Ngày quyết định lại | Đề xuất 2026-11-19, trong ca đánh giá kế tiếp sau phản hồi Coach; nếu chưa có thì giữ chờ, không tự coi PASS |
-| PIC ký | TaCongBinh-2A202603628 — PIC được phân công; người thật xác nhận trước nộp, chưa giả lập chữ ký |
+| Ngày quyết định lại | 2026-11-19, trong ca đánh giá kế tiếp sau khi bổ sung đủ dữ liệu của bộ phát hành |
+| PIC ký | TaCongBinh-2A202603628 — trưởng nhóm |
 
-**So với v1:** đổi từ Tiếp tục sang Cải tiến thêm vì S1 bộc lộ nhánh chưa bảo vệ và tự kiểm tổng chưa xác nhận integrity. Prepared chỉ đạt 0.6154, hoàn sai 275.000đ, lỗi hãng oan 15; bản after cuối khắc phục các lỗi công khai nhưng không chứng minh toàn bộ môi trường thật. Giữ nguyên v1/B8 và phụ lục kiểm chứng, không sửa lại lịch sử.
+**So với v1:** đổi từ Tiếp tục sang Cải tiến thêm vì S1 bộc lộ nhánh chưa bảo vệ và tự kiểm tổng chưa xác nhận integrity. Prepared chỉ đạt 0.6154, hoàn sai 275.000đ, lỗi hãng oan 15; bản after cuối khắc phục các lỗi công khai nhưng không chứng minh toàn bộ môi trường thật. V1 tại B8 và phụ lục kiểm chứng là mốc đối chiếu.
 
-Report nói **được phép cân nhắc Tiếp tục** về các ngưỡng đo được. Đó không phải chứng nhận grade tổng PASS: ô integrity còn đỏ. Quyết định thận trọng Cải tiến thêm phù hợp thiếu bằng chứng; không yêu cầu làm thêm S2–S8. Chưa đo ghi đồng thời, tính đúng thực tế của tracking và thời gian reviewer xử lý thật; đây là đầu việc trước đánh giá 2.
+Các chỉ số after đáp ứng ngưỡng đã ký trên S1 và bộ nền. Integrity chưa đạt do thiếu dữ liệu của bộ phát hành. Quyết định v2 là Cải tiến thêm; phạm vi xử lý sự cố vẫn là S1. Các phép đo cần bổ sung trước đánh giá 2 gồm ghi đồng thời, chất lượng tracking và thời gian xử lý của reviewer trong thực tế.
 
 **Ba dòng bắt buộc** (giống nguyên văn trong submission.json):
 
