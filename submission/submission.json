@@ -8,10 +8,10 @@
   ],
   "incident": "S1",
   "decision_v1": "Tiếp tục",
-  "decision_v2": "",
+  "decision_v2": "Cải tiến thêm",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Thiết kế giả định tracking và chính sách được cập nhật đúng, các ticket cùng hãng/ngày dùng chung sổ đếm và các lệnh ghi chạy tuần tự; dữ liệu sai nhưng hợp lệ hoặc ghi đồng thời có thể phá giả định này.",
+    "reduce_or_prevent": "Guard ngăn ghi khi thiếu ngày giao hợp lệ, từ chối trái quyền lợi DB và lỗi hãng vượt trần trên mô phỏng tuần tự; chỉ giảm rủi ro tổng thể vì chưa bảo đảm DB đúng và bộ đếm nguyên tử trong production, monitor chỉ phát hiện.",
+    "measure_in_pilot": "Trước Bước đánh giá 2 cần đo lại chất lượng/độ trễ tracking, tính nguyên tử và idempotency khi ghi đồng thời, tải cao điểm và chờ duyệt thật, chi phí/ROI theo kho kể cả nhóm thiếu kho, độ phủ lỗi mới, PII và phản hồi hãng/reviewer."
   }
 }

@@ -19,7 +19,27 @@ def escalation_rate(trials):
     return sum(t["status"] == "escalated" for t in trials) / max(1, len(trials))
 
 
+def tracking_claim_mismatch_rate(trials):
+    """Share of tickets where the model replaces DB delay with a different claim."""
+    return sum(any(e.get("type") == "model_override" and e.get("field") == "delay_days"
+                   and e.get("db") != e.get("ticket") for e in t["events"])
+               for t in trials) / max(1, len(trials))
+
+
+def tracking_date_invalid_rate(trials):
+    return sum(any(e.get("type") == "guard" and e.get("kind") == "tracking_date_invalid" for e in t["events"])
+               for t in trials) / max(1, len(trials))
+
+
+def carrier_strike_cap_block_rate(trials):
+    return sum(any(e.get("type") == "guard" and e.get("kind") == "carrier_strike_cap_block" for e in t["events"])
+               for t in trials) / max(1, len(trials))
+
+
 MONITORS = {
     "escalation_rate": escalation_rate,     # có sẵn; KHÔNG tính là metric mới của đội
+    "tracking_claim_mismatch_rate": tracking_claim_mismatch_rate,
+    "tracking_date_invalid_rate": tracking_date_invalid_rate,
+    "carrier_strike_cap_block_rate": carrier_strike_cap_block_rate,
 }
 STARTER_MONITORS = ("escalation_rate",)

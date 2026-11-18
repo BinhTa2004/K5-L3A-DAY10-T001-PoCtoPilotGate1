@@ -39,6 +39,17 @@ def pre_guard(ctx):
         return Verdict.escalate("không xác định được ngày hiệu lực chính sách")
     if policy is None:
         return Verdict.escalate("không có chính sách hiệu lực, cần người duyệt")
+    order = ctx.tools.lookup_order(ctx.ticket.get("order_id"))
+    if order and order.get("customer_id") == ctx.ticket.get("customer_id"):
+        for parcel in order.get("parcels", []):
+            if parcel.get("status") == "DELIVERED":
+                try:
+                    delivered = H.d(parcel["delivered_date"])
+                    if delivered > H.d(ctx.as_of):
+                        raise ValueError("ngày giao nằm trong tương lai")
+                except (KeyError, TypeError, ValueError):
+                    ctx.log("tracking_date_invalid", parcel_id=parcel.get("parcel_id"))
+                    return Verdict.escalate("kiện đã giao thiếu ngày giao hợp lệ; xác minh tracking trước mọi lệnh ghi")
     return Verdict.allow(policy_id=policy["policy_id"])
 
 
@@ -107,6 +118,12 @@ def _carrier_fault_gate(ctx, action, order, parcel, policy, delay):
         return Verdict.deny("tracking và chính sách không đủ căn cứ ghi lỗi hãng")
     if ctx.tools.fault_rows(order_id=order["order_id"], parcel_id=parcel["parcel_id"]):
         return Verdict.deny("kiện đã có bản ghi lỗi, không ghi lặp")
+    cap = ctx.tools.ops_limits().get("max_auto_strikes_per_carrier_per_day")
+    if type(cap) is not int or cap < 0:
+        return Verdict.deny("chưa xác định trần ghi lỗi tự động của hãng; cần người duyệt")
+    if len(ctx.tools.fault_rows(carrier_id=parcel["carrier_id"])) >= cap:
+        ctx.log("carrier_strike_cap_block", carrier_id=parcel["carrier_id"], cap=cap)
+        return Verdict.deny("đã đạt trần ghi lỗi tự động của hãng trong ngày; chuyển phần trách nhiệm hãng cho người duyệt")
     expected = {"parcel_id": parcel["parcel_id"], "carrier_id": parcel["carrier_id"],
                 "driver_id": parcel.get("driver_id"), "delay_days": delay}
     if any(action.get(key) != value for key, value in expected.items()):
@@ -137,15 +154,36 @@ def _carrier_notice_gate(ctx, action, order, parcel, policy, delay):
     return Verdict.allow()
 
 
+def _reply_gate(ctx, action, order, parcel, policy, delay):
+    """Check a zero-refund proposal even when no refund write was attempted."""
+    if action.get("ticket_id") != ctx.ticket["ticket_id"] or action.get("customer_id") != order["customer_id"]:
+        return Verdict.escalate("phản hồi không khớp ticket hoặc chủ đơn")
+    proposals = [event for event in ctx.events if event.get("type") == "proposal"]
+    if not proposals or proposals[-1].get("amount_vnd", 0) > 0:
+        return Verdict.allow()
+    if delay and parcel.get("delay_cause") is None:
+        return Verdict.escalate("tracking thiếu nguyên nhân trễ; chưa đủ căn cứ từ chối quyền lợi")
+    entitlement = H.entitlement_vnd(policy, order, delay, parcel.get("delay_cause"))
+    paid = sum(row["amount_vnd"] for row in ctx.tools.ledger_rows(order_id=order["order_id"]))
+    if entitlement > paid:
+        ctx.log("refund_denial_mismatch", entitlement_vnd=entitlement, paid_vnd=paid)
+        return Verdict.escalate("đề xuất từ chối khác quyền lợi còn lại theo tracking; cần người xác minh")
+    return Verdict.allow()
+
+
 def write_gate(ctx, action):
     tool = action.get("tool")
-    if tool in ("issue_refund", "file_carrier_fault", "notify_carrier"):
+    # Replies without a refund proposal include informational/unknown-order paths.
+    check_reply = tool == "send_reply" and any(e.get("type") == "proposal" for e in ctx.events)
+    if tool in ("issue_refund", "file_carrier_fault", "notify_carrier") or check_reply:
         try:
             facts = _facts(ctx)
             if tool == "issue_refund":
                 return _refund_gate(ctx, action, *facts)
             if tool == "file_carrier_fault":
                 return _carrier_fault_gate(ctx, action, *facts)
+            if tool == "send_reply":
+                return _reply_gate(ctx, action, *facts)
             return _carrier_notice_gate(ctx, action, *facts)
         except (KeyError, TypeError, ValueError):
             return Verdict.escalate("thiếu hoặc sai dữ liệu nguồn để kiểm tra lệnh ghi")

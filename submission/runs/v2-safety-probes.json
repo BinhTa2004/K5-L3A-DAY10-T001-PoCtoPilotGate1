@@ -1,0 +1,54 @@
+{
+  "code_hash": "e13c24fbe6a06604fd5e42f0eedc0280d12be84ab8704d5aa973ecfdfc3f6e11",
+  "source": "synthetic adjacent checks, not hidden tests",
+  "checks": [
+    {
+      "name": "DELIVERED invalid date None",
+      "passed": true
+    },
+    {
+      "name": "DELIVERED invalid date ''",
+      "passed": true
+    },
+    {
+      "name": "DELIVERED invalid date 'bad-date'",
+      "passed": true
+    },
+    {
+      "name": "DELIVERED invalid date '2026-12-01'",
+      "passed": true
+    },
+    {
+      "name": "IN_TRANSIT may omit delivery date",
+      "passed": true
+    },
+    {
+      "name": "zero proposal cannot deny DB entitlement",
+      "passed": true
+    },
+    {
+      "name": "informational reply without refund proposal",
+      "passed": true
+    },
+    {
+      "name": "same carrier cap blocks extra strike",
+      "passed": true
+    },
+    {
+      "name": "cap event monitor reads guard kind",
+      "passed": true
+    },
+    {
+      "name": "other carrier strikes do not consume this cap",
+      "passed": true
+    },
+    {
+      "name": "fresh day resets automatic strike count",
+      "passed": true
+    },
+    {
+      "name": "empty monitor input",
+      "passed": true
+    }
+  ]
+}

@@ -198,14 +198,12 @@ Ghi chú kỹ thuật: bản sửa giữ nguyên các ngưỡng và tên đứng
 - CP5 chỉ hoàn tất sau report S1 mới nhất, ba mốc, monitor mới, Phiếu C, ba dòng bắt buộc, đủ thành phần và từng thành viên tự xác nhận/nộp LMS. Người dùng tự commit/push; Codex không thực hiện commit nhận thẻ hoặc commit bài.
 
 
-### Trạng thái sẵn sàng sau hoàn thiện hồ sơ v1
+### Trạng thái cuối sau xử lý S1
 
-- Checkpoint ba703106 và tiêu chí ea9f3d1d giữ nguyên hash; lỗi CRLF đã khôi phục về đúng byte gốc, không đổi nội dung file khóa. .gitattributes giữ định dạng qua các máy và giữ nguyên byte artifact submission.
-- Lần kiểm chứng prepared `R-base-prepared-20261118-165612-591bdf` và after `R-base-after-20261118-165612-591bdf` đạt 110/110, 0 lỗi an toàn, 4.274đ/ticket, ROI 1.34, 0 ca ùn. B7.2/B7.3 đã bổ sung bằng hai ticket thật trước đọc S1; không tuyên bố đã làm trước thời điểm snapshot cũ. V1 gốc được giữ và có phụ lục hiệu đính.
-- S1 do người dùng xác nhận. Nhận thẻ bị chặn vì repo cards trả Repository not found; chưa có dữ liệu S1/grade/monitor mới/quyết định v2. Cần Coach xác nhận link và quyền đọc cho tài khoản đang dùng Git.
-- Mục cá nhân vẫn do từng người tự xác nhận công việc thực tế; Codex không ký thay hoặc tự đánh dấu đã nộp LMS. Không có commit/push trong bước hoàn thiện này.
-
-
-### Đã bắt đầu CP4 với thẻ S1 tải tay
-
-Người dùng cung cấp thư mục S1 ở root. Đã cài đúng incidents/S1, đối chiếu bốn hash và chạy grade đầu R-S1-grade-20261118-170028-591bdf trước sửa theo thẻ. C0–C6 có số thật và phân tích bước đầu; hướng sửa chỉ là đề xuất. Chưa sửa guards/config/monitors theo S1, chưa có C7–C12 hoàn tất. Integrity còn thiếu gói S2–S8 trong manifest; cần bộ phát hành đầy đủ hoặc hướng dẫn/manifest chính thức từ Coach, không tự bỏ các mục kiểm. Không đọc thẻ khác.
+- Người dùng đã cung cấp S1 ở root; bốn file incidents/S1 đúng hash. Chỉ chạy/đọc thẻ được giao S1 và bộ nền; không cần làm S2–S8.
+- Grade đầu R-S1-grade-20261118-170028-591bdf được giữ làm bằng chứng trước sửa. Theo yêu cầu trưởng nhóm, Codex hỗ trợ hoàn thiện guards/monitors, chạy kiểm chứng và soạn C7–C12/submission. Phân công PIC là trách nhiệm rà soát; không tự nhận từng thành viên đã trực tiếp chạy hoặc ký phần AI hỗ trợ.
+- Ba sửa vòng 2: kiểm ngày giao trước tác dụng phụ, kiểm đề xuất từ chối trước phản hồi, thực thi trần Ops 2 lỗi/hãng/ngày. Không sửa tiêu chí, snapshot vòng 1, model/prompt, dữ liệu hoặc grader.
+- Grade cuối R-S1-grade-20261118-172005-e13c24: S1 65/65, nền 110/110; hoàn sai/thiếu, lỗi hãng oan, PII đều 0. S1 chi phí 6.008đ/ticket, ROI 0.66, escalation 0.3077, 0 ca ùn; ba monitor mới sáng đèn. 13 public tests và 12 kiểm tra bổ sung đạt; không có hidden tests trên máy.
+- Grade tổng vẫn FAIL vì manifest yêu cầu 28 file S2–S8 không có trong gói chỉ nhận S1. Đây là việc xác nhận bộ phát hành với Coach, không phải yêu cầu nhóm giải thẻ khác; không tự bỏ kiểm integrity.
+- Quyết định v2 lập trong Phiếu C/submission.json là Cải tiến thêm do thiếu bằng chứng kiểm gói hợp lệ. PIC Bình rà với Coach trong ca đánh giá kế tiếp; Đăng rà quyết định, Dũng kiểm kỹ thuật/monitor, Long rà hồ sơ. Không giả lập đã họp hoặc chữ ký của nhóm.
+- Phiếu C và ba dòng bắt buộc đã điền theo số thật. check_submission chỉ xác nhận đủ thành phần, không thay kết luận grade. Từng thành viên tự xác nhận công việc/exit ticket và nộp LMS theo hướng dẫn Coach. Người dùng tự commit/push; Codex không stage/commit/push.
