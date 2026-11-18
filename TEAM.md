@@ -98,19 +98,25 @@ Sản phẩm và kinh doanh. A1 câu 1.1, A3–A5; `config/acceptance_criteria.j
 
 ### Đóng góp cụ thể
 
-Chờ thành viên tự ghi công việc thực tế đã hoàn thành.
+- Phụ trách xây dựng mục tiêu hệ thống (Phiếu A mục A1) và bộ tiêu chí chấp nhận tại `config/acceptance_criteria.json`, xác lập 5 ngưỡng bắt buộc (hoàn sai = 0, lỗi hãng oan = 0, lộ PII = 0), ngưỡng kinh doanh và 4 quy tắc quyết định Gate 1.
+- Soát và chịu trách nhiệm toàn bộ Bản đồ dữ liệu hệ thống và phân tích ví dụ Data Drift trong 3 tháng tới khi chuyển đổi chính sách REFUND-v3 sang v4 (Phiếu B mục B3).
+- Cấu hình và giải trình Cổng kinh doanh trong `config/operating_gates.json` mục `business` (trần ngân sách ngày 2.000.000đ, ngân sách LLM 1.500đ/ticket, ROI >= 0.25) và điền Phiếu B mục B7.4.
+- Đóng góp góc nhìn kinh doanh/tài chính trong Pre-mortem (B6), rà soát kết quả mốc base và prepared, tổng hợp Quyết định Gate 1 · v1 (Tiếp tục) tại Phiếu B mục B8.
 
 ### Bằng chứng
 
-Chờ thành viên bổ sung mã commit, mã lần chạy và vị trí trong phiếu.
+- Mã commit: `d64c642` (Sign acceptance criteria), `94f4aaa` (LAB 10: chốt cổng vòng 1, quyết định v1) trên branch `tuandang`.
+- Mã lần chạy: baseline `R-base-before-20261118-160514-b45eeb` · prepared `R-base-prepared-20261118-160742-f30e7d`.
+- Vị trí trong phiếu: Phiếu A mục A1, A4, A5; Phiếu B mục B3, B7.4, B8; `config/operating_gates.json` mục `business`.
 
 ### Exit ticket
 
-Chờ thành viên tự viết một điều học được và một điều còn chưa chắc.
+- Một điều học được: Cách chuyển hóa yêu cầu nghiệp vụ và trần tài chính thành các cổng kiểm soát định lượng cấp hệ thống (system-level gates) để chặn đứng rủi ro bồi hoàn sai mà vẫn duy trì ROI cao (1.34 so với làm tay).
+- Một điều còn chưa chắc: Khả năng kiểm soát tình trạng tài xế quét khống trạng thái giao hàng khi mở rộng quy mô pilot ra ngoài 2 depot thử nghiệm ban đầu.
 
 ### Sử dụng AI
 
-Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
+Sử dụng trợ lý AI để tra cứu công thức tính chi phí và ROI trong `lab10/ops.py`, hỗ trợ cấu trúc hóa câu tiêu chí và rà soát tính nhất quán giữa các con số trong config với báo cáo đánh giá. Kiểm tra lại 100% bằng lệnh `python3 -m lab10.eval` và `lab10.gate`.
 
 ## TaCongBinh-2A202603628
 
