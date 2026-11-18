@@ -17,17 +17,27 @@
     "review_capacity_per_hour": 6,
     "max_queue_wait_minutes": 60,
     "stop_conditions": [
-      "Khi có bất kỳ lần hoàn sai, ghi lỗi oan cho hãng hoặc lộ PII nào thì lập tức dừng thao tác tương ứng."
+      "Khi có 1 khoản hoàn sai (wrongful_refund_vnd > 0) thì NV-TUNG tắt issue_refund, mọi ticket hoàn tiền chuyển NV-HANH duyệt tay",
+      "Khi có 1 lỗi ghi oan cho hãng thì NV-TUNG tắt file_carrier_fault và notify_carrier, NV-OANH rà lại sổ lỗi hãng trong ngày",
+      "Khi có 1 thông báo gửi hãng chứa trường dữ liệu cá nhân thì NV-TUNG tắt notify_carrier ngay",
+      "Khi có 1 ca chờ người duyệt quá 60 phút (queue_stuck > 0) thì gọi thêm người trực; nếu 30 phút sau vẫn còn ca ùn thì thu hẹp pilot_scope",
+      "Khi tổng hoàn tự động trong ngày chạm 2.000.000đ thì mọi khoản hoàn còn lại chuyển người duyệt tới hết ngày"
     ],
-    "alert_channel": "slack-#ops-alerts",
+    "alert_channel": "#logix-refund-pilot-alert",
     "decision_note": true,
     "review_sampling_pct": 0
   },
   "legal": {
     "pii_fields_blocked_to_third_party": [
-      "customer_phone",
-      "customer_address",
-      "customer_note"
+      "customer_note",
+      "recipient_contact",
+      "name",
+      "phone",
+      "street",
+      "address",
+      "customer_name",
+      "recipient_name",
+      "recipient_phone"
     ],
     "carrier_fault_requires_recorded_cause": true
   }
