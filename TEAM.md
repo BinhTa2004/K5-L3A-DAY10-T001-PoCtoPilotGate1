@@ -7,7 +7,7 @@
 - Repo của bàn: `K5-L3A-DAY10-T001-PoCtoPilotGate1`
 - Link repo: https://github.com/BinhTa2004/K5-L3A-DAY10-T001-PoCtoPilotGate1
 - Trưởng nhóm: Ta Cong Binh — MSSV `2A202603628`.
-- Thẻ sự cố đã bốc (S1–S8):
+- Thẻ sự cố đã bốc (S1–S8): `S1` (người dùng xác nhận trong phiên).
 
 ## Thành viên
 
@@ -187,3 +187,25 @@ Chờ thành viên tự viết một điều học được và một điều c�
 Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
 
 Ghi chú kỹ thuật: bản sửa giữ nguyên các ngưỡng và tên đứng ký dạng ngắn do người dùng chỉnh; commit lưu đúng byte đã ký để hash nhất quán giữa các máy. Bản sao trước sửa được giữ ngoài repo. Không chạy eval/grade trong quá trình sửa.
+
+
+### Bàn giao kiểm chứng v1 và chuẩn bị checkpoint cuối
+
+- Hoàn thiện B7.2/B7.3 với hỗ trợ Codex theo yêu cầu trưởng nhóm, trước khi đọc S1; không tự nhận Dũng đã trực tiếp chạy hai ca.
+- Snapshot ba703106 được khôi phục đúng byte LF, không tạo checkpoint mới; chuẩn bị và after đã đo lại, số thật và lưu ý v1 gốc nằm ở phụ lục Phiếu B cùng submission/runs/v1-readiness.json.
+- Người dùng xác nhận thẻ S1 và cung cấp repo cards. Chỉ nhận/đọc S1; chạy grade trước thay đổi vòng 2. Không chọn thẻ khác hoặc tạo dữ liệu sự cố.
+- Sau grade đầu: Bình dò trace và cổng code; Đăng specification/kinh doanh/quyết định; Long HAZOP/runbook/rủi ro; Dũng monitor, fault tree và kiểm hồi quy. Cả nhóm chốt v2 theo tiêu chí, không mặc định Tiếp tục.
+- CP5 chỉ hoàn tất sau report S1 mới nhất, ba mốc, monitor mới, Phiếu C, ba dòng bắt buộc, đủ thành phần và từng thành viên tự xác nhận/nộp LMS. Người dùng tự commit/push; Codex không thực hiện commit nhận thẻ hoặc commit bài.
+
+
+### Trạng thái sẵn sàng sau hoàn thiện hồ sơ v1
+
+- Checkpoint ba703106 và tiêu chí ea9f3d1d giữ nguyên hash; lỗi CRLF đã khôi phục về đúng byte gốc, không đổi nội dung file khóa. .gitattributes giữ định dạng qua các máy và giữ nguyên byte artifact submission.
+- Lần kiểm chứng prepared `R-base-prepared-20261118-165612-591bdf` và after `R-base-after-20261118-165612-591bdf` đạt 110/110, 0 lỗi an toàn, 4.274đ/ticket, ROI 1.34, 0 ca ùn. B7.2/B7.3 đã bổ sung bằng hai ticket thật trước đọc S1; không tuyên bố đã làm trước thời điểm snapshot cũ. V1 gốc được giữ và có phụ lục hiệu đính.
+- S1 do người dùng xác nhận. Nhận thẻ bị chặn vì repo cards trả Repository not found; chưa có dữ liệu S1/grade/monitor mới/quyết định v2. Cần Coach xác nhận link và quyền đọc cho tài khoản đang dùng Git.
+- Mục cá nhân vẫn do từng người tự xác nhận công việc thực tế; Codex không ký thay hoặc tự đánh dấu đã nộp LMS. Không có commit/push trong bước hoàn thiện này.
+
+
+### Đã bắt đầu CP4 với thẻ S1 tải tay
+
+Người dùng cung cấp thư mục S1 ở root. Đã cài đúng incidents/S1, đối chiếu bốn hash và chạy grade đầu R-S1-grade-20261118-170028-591bdf trước sửa theo thẻ. C0–C6 có số thật và phân tích bước đầu; hướng sửa chỉ là đề xuất. Chưa sửa guards/config/monitors theo S1, chưa có C7–C12 hoàn tất. Integrity còn thiếu gói S2–S8 trong manifest; cần bộ phát hành đầy đủ hoặc hướng dẫn/manifest chính thức từ Coach, không tự bỏ các mục kiểm. Không đọc thẻ khác.

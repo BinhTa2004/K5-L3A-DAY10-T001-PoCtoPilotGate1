@@ -1,0 +1,13 @@
+# Locked lab files and snapshots must retain their published LF hashes on Windows.
+data/** text eol=lf
+lab10/** text eol=lf
+tests/** text eol=lf
+incidents/** text eol=lf
+config/operating_gates*.json text eol=lf
+config/switches.json text eol=lf
+
+# This file was signed with its existing bytes; never normalize it after signing.
+config/acceptance_criteria.json -text
+
+# Collected evidence has byte hashes in manifest.json; preserve exact artifact bytes.
+submission/** -text whitespace=cr-at-eol
