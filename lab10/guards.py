@@ -26,10 +26,8 @@ ctx.tools    tra cứu nguồn sự thật: lookup_order, lookup_policies, looku
 ctx.gates    config cổng của bàn (config/operating_gates.json), chỉ đọc;  ctx.cost_vnd = tiền LLM đã tốn cho ticket này
 ctx.events   trace tới thời điểm này;  ctx.log("ten_su_kien", ...) ghi thêm sự kiện guard vào trace
 lab10.helpers: db_delay_days, ticket_parcel, effective_policy, entitlement_vnd, carrier_at_fault, digits
-
-Mặc định dưới đây cho qua tất cả (= mốc base).
 """
-from . import helpers as H  # noqa: F401
+from . import helpers as H
 from .tools import Verdict
 
 
@@ -38,5 +36,35 @@ def pre_guard(ctx):
 
 
 def write_gate(ctx, action):
-    # action = {"tool": "issue_refund", "ticket_id":..., "order_id":..., "amount_vnd":..., "payer":..., ...}
+    tool = action.get("tool")
+    
+    # Cổng 1: Kiểm soát lệnh hoàn tiền theo quyền lợi thực tế từ Tracking DB & Chính sách
+    if tool == "issue_refund":
+        order_id = action.get("order_id")
+        amount = action.get("amount_vnd", 0)
+        order = ctx.tools.lookup_order(order_id)
+        if order and not action.get("approval_id"):
+            parcel = H.ticket_parcel(order, ctx.ticket, ctx.as_of)
+            delay = H.db_delay_days(parcel, ctx.as_of)
+            policy = H.effective_policy(ctx.tools.lookup_policies(), ctx.as_of)
+            if policy:
+                entitled = H.entitlement_vnd(policy, order, delay, parcel.get("delay_cause"))
+                # Nếu số tiền đề xuất hoàn vượt quyền lợi tính từ DB
+                if amount > entitled:
+                    if entitled == 0:
+                        return Verdict.deny(f"Đơn hàng trễ {delay} ngày chưa đủ điều kiện hoàn tiền theo chính sách {policy.get('policy_id')}")
+                    else:
+                        return Verdict.modify(f"Điều chỉnh số tiền hoàn về đúng quyền lợi tracking DB: {entitled}đ", amount_vnd=entitled)
+    
+    # Cổng 2: Kiểm soát lệnh ghi lỗi hãng vận chuyển (không ghi oan)
+    elif tool == "file_carrier_fault":
+        order_id = action.get("order_id")
+        order = ctx.tools.lookup_order(order_id)
+        if order:
+            parcel = H.ticket_parcel(order, ctx.ticket, ctx.as_of)
+            delay = H.db_delay_days(parcel, ctx.as_of)
+            policy = H.effective_policy(ctx.tools.lookup_policies(), ctx.as_of)
+            if policy and not H.carrier_at_fault(policy, parcel, delay):
+                return Verdict.deny(f"Không đủ điều kiện ghi lỗi hãng: trễ {delay} ngày hoặc nguyên nhân {parcel.get('delay_cause')} không thuộc lỗi hãng")
+                
     return Verdict.allow()
