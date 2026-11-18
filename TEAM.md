@@ -58,6 +58,30 @@ Khi nhận thẻ, Bình cùng nhóm rà lại khối lượng theo nguyên nhân
 - Sau demo, phối hợp trả code / config về bản v2, chạy lại grade và gom bài nếu có thay đổi; kiểm tra đủ thành phần trước khi push.
 - Mỗi người tự hoàn thiện đóng góp, bằng chứng, exit ticket và khai báo dùng AI nếu có; mỗi người tự nộp link repo nhóm trên LMS.
 
+### Người đứng tên, người rà soát và ghi nhận đóng góp
+
+Phân công dưới đây được lập theo yêu cầu trong phiên. Tên người phụ trách ở đây không thay cho xác nhận đã rà soát hoặc đã làm xong.
+
+| Hồ sơ / bước | Người soạn / chuẩn bị | Người rà soát được phân công | Người đứng tên ký / chốt |
+|---|---|---|---|
+| Tiêu chí và Phiếu A | Đăng phụ trách nội dung; Codex hỗ trợ soạn | Dũng: cách đo; Long: vận hành/pháp lý; Bình: tổng thể | Bình (TaCongBinh-2A202603628); lệnh ký được thực hiện bằng Codex theo yêu cầu trong phiên, kết quả đối chiếu lock và Git |
+| Quyết định v1 ở B8 | Đăng tổng hợp, Bình cung cấp report prepared | Dũng kiểm số liệu, Long kiểm vận hành/pháp lý; cả nhóm thống nhất | Bình được phân công ký sau khi đủ bằng chứng; hiện chưa ký v1 |
+| Quyết định v2 ở C12 | Đăng tổng hợp; Dũng trích report ba mốc | Bình kiểm code/report, Long kiểm tác động và runbook; cả nhóm thống nhất | Bình được phân công ký sau khi đủ bằng chứng; hiện chưa ký v2 |
+| Runbook và gói submission | Long phụ trách nội dung, Bình chạy gom file | Dũng kiểm đủ report; Đăng kiểm quyết định và ba dòng | Long xác nhận nội dung phần phụ trách; Bình điều phối nộp sau khi hoàn tất |
+| Mục cá nhân TEAM.md | Từng thành viên tự ghi | Tự đối chiếu commit, lần chạy và phiếu thật | Mỗi người tự xác nhận đóng góp, AI đã dùng và exit ticket; không ký thay |
+
+Từ bước này, bản soạn tiêu chí có dùng PRD/eval card Lab 9 của Bình và ops_facts/ops_limits Day 10. Chi phí 8.000đ, ROI 0.25 và escalation 0.40 là lựa chọn thiết kế nêu lý do trong Phiếu A, không phải kết quả đo hoặc yêu cầu số cố định của đề. Chưa chạy eval/grade Day 10 để chọn ngưỡng.
+
+### Trạng thái ký và tự commit/push
+
+- Người được phân công đứng tên: TaCongBinh-2A202603628, trưởng nhóm.
+- Lệnh ký đã tạo acceptance_criteria.lock; giữ nguyên cả file tiêu chí và lock, không ký lại. Hash đối chiếu trong Phiếu A mục A5.
+- Theo yêu cầu người dùng, ba commit do Codex tạo đã được thu hồi khỏi main; main trên GitHub trở về commit 79a6c79 của người dùng. Nhánh sửa trên GitHub đã được thu hồi. Nội dung bài làm trên máy được giữ lại ở trạng thái chưa commit.
+- Bình tự commit hai file tiêu chí và lock với đúng message Sign acceptance criteria, rồi tự push lên origin main trước khi chạy eval/grade; sau đó cập nhật mã commit và trạng thái push thật trong A5.
+- Git cục bộ giữ nguyên byte của config/acceptance_criteria.json khi git add để hash trong commit khớp lock. Không sửa hoặc tự định dạng lại file tiêu chí.
+- Chưa chạy eval/grade Day 10; quyết định v1/v2 chưa ký. Từng người tự xác nhận phần rà soát và đóng góp thực tế của mình.
+- Bản sao các commit trước thu hồi được giữ ở nhánh backup/day10-before-user-commit trên máy. Codex không tự commit/push tiếp nếu chưa được yêu cầu.
+
 ### Ghi nhận hỗ trợ AI trong bước chuẩn bị
 
 Nhóm đã dùng Codex để điền danh sách thành viên theo thông tin cung cấp và soạn phân công đề xuất. Các mục cá nhân bên dưới là khung để từng người hoàn thiện theo việc thực tế, chưa phải xác nhận đã làm xong.
@@ -153,3 +177,5 @@ Chờ thành viên tự viết một điều học được và một điều c�
 ### Sử dụng AI
 
 Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
+
+Ghi chú kỹ thuật: bản sửa giữ nguyên các ngưỡng và tên đứng ký dạng ngắn do người dùng chỉnh; commit lưu đúng byte đã ký để hash nhất quán giữa các máy. Bản sao trước sửa được giữ ngoài repo. Không chạy eval/grade trong quá trình sửa.

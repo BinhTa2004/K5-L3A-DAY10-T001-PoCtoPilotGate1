@@ -436,7 +436,7 @@ Cột v1 nằm ở Phiếu B mục B8; không sửa cột đó.
 | Nếu Cải tiến thêm: giả thuyết cụ thể (nhánh nào của fault tree) + hạn | |
 | Nếu Dừng: bài học ghi lại | |
 | Ngày quyết định lại (trừ khi Dừng) | |
-| PIC ký | |
+| PIC ký | TaCongBinh-2A202603628 — người được phân công; chưa ký v2 |
 
 **Chỉ ở v2**
 - Quyết định đổi hay giữ so với v1? Vì con số nào: …

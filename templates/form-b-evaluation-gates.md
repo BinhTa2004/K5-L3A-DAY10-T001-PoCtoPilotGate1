@@ -325,7 +325,7 @@ nguyên nhân trong tracking). Rồi viết runbook dưới đây **khớp với
 
 *Runbook là tờ giấy người trực ca cầm lúc 23h khi có chuyện. Nó trả lời: nhìn con số nào, ngưỡng nào thì làm gì, ai được quyết.
 Phần 1–3 và mục Giờ cao điểm viết ở vòng 1. Phần 4–5 viết ở vòng 2 (Phiếu C mục C11). Mọi con số phải khớp `config/operating_gates.json` và report.*
-*Mỗi phần trả lời bốn câu hỏi: ai chịu trách nhiệm, nhìn gì, ngưỡng nào, làm gì.* **Người viết (vai Vận hành và pháp lý):** ______
+*Mỗi phần trả lời bốn câu hỏi: ai chịu trách nhiệm, nhìn gì, ngưỡng nào, làm gì.* **Người viết được phân công (vai Vận hành và pháp lý):** HoangHaiLong-2A202603670; chưa xác nhận đã hoàn thành runbook
 
 #### Runbook 1 · Ai chịu trách nhiệm
 
@@ -411,7 +411,7 @@ bao nhiêu thời gian? (3) Có phần nào của dự án không nên làm ti�
 | Nếu Dừng: bài học ghi lại | |
 | Một bằng chứng còn thiếu (thứ bộ nền chưa đo được) | |
 | Ngày quyết định lại (trừ khi Dừng) | |
-| PIC ký | |
+| PIC ký | TaCongBinh-2A202603628 — người được phân công; chưa ký v1 |
 
 Xong v1 thì lưu và đẩy một bản (sau mốc này không sửa cột v1):
 

@@ -1,156 +1,113 @@
 # Phiếu A · Tiêu chí và cách đo · Khối 1 (phút 15–65)
 
-**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1 · **Người cầm bút chính (phân công đề xuất):** Trần Tuấn Đăng — Sản phẩm và kinh doanh (câu 1.3: Nguyen Tuan Dung — Kỹ sư cổng; câu 1.2, 1.4: Hoang Hai Long — Vận hành và pháp lý)
+**Bàn:** K5-L3A-DAY10-T001-PoCtoPilotGate1
 
 **Thành viên:** Trần Tuấn Đăng (2A202603618); Ta Cong Binh (2A202603628); Nguyen Tuan Dung (2A202603608); Hoang Hai Long (2A202603670).
 
-Phân công chi tiết và mục cá nhân: xem `TEAM.md`. Bình hỗ trợ rà soát ranh giới đầu ra A4 và commit/push A5 sau khi nhóm thống nhất. Đây là phân công dự kiến, chưa xác nhận các mục trả lời đã hoàn thành.
+**Phân công:** Đăng phụ trách nội dung tiêu chí; Dũng rà soát thước đo; Long rà soát vận hành/pháp lý; Bình đứng tên ký và phụ trách Git. Bản này được soạn với hỗ trợ Codex theo yêu cầu trong phiên; phần phân công không xác nhận từng người đã tự viết hoặc đã rà soát.
 
-Điền phiếu này **trước khi chạy trợ lý lần nào**. Viết xong thì chép ngưỡng sang `config/acceptance_criteria.json`, ký ở phút 60–65,
-rồi mới chạy đánh giá. Khối 1 không sửa code.
+**Đầu vào Lab 9:** [PRD v1.1](https://github.com/BinhTa2004/K5-L3A-DAY09-TaCongBinh-2A202603628-EvaluationandFailureAnalysis/blob/main/docs/PRD_v1.1.md) và [eval card](https://github.com/BinhTa2004/K5-L3A-DAY09-TaCongBinh-2A202603628-EvaluationandFailureAnalysis/blob/main/docs/eval_card.md) của Bình. Chỉ kế thừa cách đo và sàn thiết kế; không coi kết quả Lab 9 là kết quả Day 10.
 
-**Mục lục**
-- [A1 · Mục tiêu (câu 1.1, 1.2) · phút 15–20](#a1)
-- [A2 · Thước đo → Dữ liệu → Cách tính (câu 1.3, 1.4) · phút 20–35](#a2)
-- [A3 · Đọc một kết quả có khoảng tin cậy (câu 1.5) · phút 35–40](#a3)
-- [A4 · Câu tiêu chí thành công và ranh giới đầu ra (câu 1.6) · phút 40–60](#a4)
-- [A5 · Ký và đẩy tiêu chí · phút 60–65](#a5)
+## A1 · Mục tiêu
 
----
+### Câu 1.1 · Mục tiêu cấp hệ thống
 
-<a id="a1"></a>
-
-## A1 · Mục tiêu (phút 15–20)
-
-### Câu 1.1 · Một mục tiêu cấp hệ thống (khác "model trả lời đúng")
-
-> …
+Chuẩn bị pilot có kiểm soát cho trợ lý hoàn tiền giao trễ: chỉ ghi tiền và lỗi hãng khi có căn cứ từ đơn hàng, tracking, chính sách và quyền phê duyệt; chứng minh chi phí thấp hơn làm tay và hàng chờ đáp ứng được trước khi cho chạy với khách thật.
 
 ### Câu 1.2 · Mục tiêu nhìn từ hai người
 
-- Chị Oanh, kế toán đối soát (không dùng trợ lý, nhưng phải khớp sổ với hãng và shop mỗi tuần): …
-- Chị Hạnh, trưởng ca CSKH (phải duyệt những ca trợ lý chuyển sang): …
+- Chị Oanh (NV-OANH): đối soát được khoản hoàn, bên trả tiền và nguyên nhân ghi lỗi từ sổ cái; không phải sửa khoản hoàn trùng hoặc lỗi hãng oan khi khớp sổ với shop/hãng.
+- Chị Hạnh (NV-HANH): ca chuyển người có lý do và bằng chứng đủ để duyệt; không có ca bị ùn theo SLA 60 phút trong ops_limits; không dùng chuyển người hàng loạt để che lỗi mà vượt công suất ca.
 
----
+## A2 · Thước đo → Dữ liệu → Cách tính
 
-<a id="a2"></a>
+### Câu 1.3 · Offline metric cho bước chọn chính sách
 
-## A2 · Thước đo → Dữ liệu → Cách tính (phút 20–35)
-
-**Khung tư duy.** Một con số chỉ dùng được ở bước đánh giá khi trả lời đủ ba câu: đo CÁI GÌ (một câu, có đơn vị); lấy
-DỮ LIỆU nào, ở đâu, ai gán nhãn; TÍNH thế nào để hai người làm độc lập ra cùng một số. Thiếu ô thứ ba thì chưa phải thước đo.
-
-**Câu hỏi dẫn dắt**
-- Thước đo này nói về MỘT bước của agent hay cả luồng? Nếu cả luồng hỏng, nó có chỉ ra bước nào hỏng không?
-- Dữ liệu đã có sẵn (trace, sổ cái) hay phải thu thêm? Nhãn đúng/sai đến từ đâu?
-- Nếu là telemetry production: không có nhãn, vậy lấy tín hiệu gì thay nhãn, trong khung thời gian nào, ngưỡng nào thì báo động?
-
-### Câu 1.3 · Offline metric cho MỘT bước · Câu 1.4 · Telemetry production
-
-Câu 1.3: chọn MỘT bước (đọc ticket / chọn độ trễ / chọn chính sách / tìm phê duyệt / ghi lỗi hãng). Câu 1.4: tín hiệu cho biết
-trợ lý có đang gây thiệt hại cho bên ngoài LogiX không; không có nhãn trong production.
-
-| | Offline, cho MỘT bước (câu 1.3) | Telemetry production (câu 1.4) |
-|---|---|---|
-| **Bước / hành vi được đo** | | |
-| **Thước đo** (một câu, có đơn vị) | | |
-| **Dữ liệu** (lấy ở đâu, bao nhiêu, ai gán nhãn) | | |
-| **Cách tính** (công thức, mẫu số, cách xử lý ca thiếu dữ liệu) | | |
-| **Khung thời gian / ngưỡng báo động** | (không áp dụng) | |
-| **Điểm mù** (thước đo này KHÔNG thấy gì) | | |
-
-**Ví dụ mẫu (bước "chọn độ trễ" của agent, đừng chép):**
-Thước đo: tỉ lệ lần chạy mà độ trễ agent dùng để tính tiền khác độ trễ theo tracking DB. Dữ liệu: sự kiện `proposal.delay_days_used`
-và `tracking.db_delay_days` trong `runs/<mã lần chạy>/traces/`, 22 ticket × 5 seed của bộ nền. Cách tính: số lần hai giá trị khác
-nhau chia cho số lần chạy có sự kiện `proposal`; lần chạy không tới bước `proposal` bị loại khỏi mẫu số và đếm riêng.
-Điểm mù: không thấy trường hợp chính tracking DB sai.
-
-*(Ở vòng 2, Phiếu C mục C8 dùng lại đúng bảng ba ô này cho chỉ số theo dõi mới của bàn.)*
-
----
-
-<a id="a3"></a>
-
-## A3 · Đọc một kết quả có khoảng tin cậy (phút 35–40)
-
-### Câu 1.5 · Chọn MỘT kết luận và giải thích một câu
-
-Số minh hoạ trong đề (không phải số của bàn). Khoanh: **(a) · (b) · (c) · (d)**
-
-Giải thích một câu: …
-
----
-
-<a id="a4"></a>
-
-## A4 · Câu tiêu chí thành công (phút 40–60)
-
-### Câu 1.6 · Bản tiêu chí
-
-**Cách làm, ba bước:** (1) viết tiêu chí thành **một câu có hành động đi kèm**, thử vài phiên bản;
-(2) đưa từng phiên bản qua bốn câu hỏi soát; (3) chốt bản cuối và hẹn ngày xem lại. Điểm mấu chốt: một tiêu chí chưa nói
-"nếu trượt thì làm gì" thì chưa phải tiêu chí.
-
-#### Bước 1 · Viết câu tiêu chí (mỗi chỉ số bắt buộc một câu; thử 2 phiên bản cho chỉ số bàn tranh luận nhiều nhất)
-
-> Nếu **{chỉ số, có đơn vị}** của **{trợ lý hoàn tiền, trên bộ thử nào}** **{tụt dưới / vượt quá}** **{ngưỡng}**
-> thì chúng tôi sẽ **{hành động cụ thể: Tiếp tục / Thu hẹp phần nào / Cải tiến thêm tới ngày nào / Dừng}**.
-
-| Chỉ số (khoá trong `acceptance_criteria.json`) | Phiên bản 1 | Phiên bản 2 (nếu có) |
-|---|---|---|
-| `pass_rate_min` | | |
-| `pass_k_min` (pass^k: ticket đúng cả 5/5 lần chạy) | | |
-| `wrongful_refund_vnd_max` | | |
-| `wrongful_carrier_faults_max` | | |
-| `pii_leaks_max` | | |
-| nên có: `escalation_rate_max` | | |
-
-#### Ranh giới đầu ra (không thêm trường vào file JSON)
-
-Đây không phải ngưỡng chất lượng. Viết hai câu trên phiếu này thôi, không chép vào `acceptance_criteria.json`.
-
-- Một đầu ra hoặc hành động bị cấm (ví dụ không bao giờ hoàn quá X đồng): ____
-- Ngưỡng chuyển cho người duyệt: ____
-
-#### Bước 2 · Soát từng câu
-
-| Câu hỏi soát | Ghi chú của bàn |
+| Ô | Nội dung thiết kế trước khi đo |
 |---|---|
-| Chỉ số này có ý nghĩa với **mọi** bên liên quan không (khách, hãng vận chuyển, shop, người duyệt, kế toán)? | |
-| Chạy theo chỉ số này có thể làm **ai thiệt** (ví dụ ép tỉ lệ tự động cao thì ai gánh)? | |
-| Đây có phải nghĩa của "thành công" ở **ngày 1** của pilot không? | |
-| Còn ở **ngày thứ 1.000** (12 depot, chính sách đã đổi vài lần)? Ngưỡng nào sẽ phải viết lại? | |
+| Bước được đo | Chọn phiên bản chính sách trước tính tiền |
+| Thước đo | Tỉ lệ lần chọn policy_id đúng phiên bản có hiệu lực, đơn vị % |
+| Dữ liệu | Event type=policy, trường policy_id trong trace; data/world.json phần policies và as_of của lần chạy; bộ nền 22 ticket x 5 seed. Dũng phụ trách đối chiếu nhãn phiên bản theo ngày hiệu lực, Bình rà lại code tra cứu |
+| Cách tính | Số trial có event policy với policy_id đúng phiên bản theo effective_from/effective_to chia số trial có event policy. Trial thiếu event được đếm riêng và kiểm pass_rate toàn luồng; không xem thiếu event là chọn đúng. Mẫu số 0 thì báo không đủ dữ liệu |
+| Khung thời gian | Một lần đánh giá đầy đủ; đọc thêm theo kho/hãng |
+| Điểm mù | Không phát hiện bản thân dữ liệu ngày hiệu lực sai hoặc công thức hoàn tiền sai sau khi đã chọn đúng policy |
 
-#### Bước 3 · Chốt và hẹn ngày xem lại
+### Câu 1.4 · Telemetry production
 
-- Bản cuối của từng câu → chép **ngưỡng** vào `required` / `nice_to_have` / `business_ops`, chép **hành động** vào `decision_rule`
-  (bốn dòng: Tiếp tục, Thu hẹp, Cải tiến thêm, Dừng) và `stop_condition`. Các khoá này nằm ngay trong `config/acceptance_criteria.json`.
-- Nhóm `business_ops` (chi phí mỗi ticket tối đa, ROI tối thiểu, số ca ùn tối đa): `cost_per_ticket_vnd_max` ____ · `roi_min` ____ · `queue_stuck_max` ____
-- Ngày xem lại tiêu chí: `__________` · Ai dự: `__________` (ghi vào Phiếu B mục B8, dòng "Ngày quyết định lại").
+| Ô | Nội dung thiết kế trước khi đo |
+|---|---|
+| Hành vi được đo | Dữ liệu đưa ra bên thứ ba qua notify_carrier |
+| Thước đo | Số thông báo có khóa ngoài allowlist carrier_notice_fields của chính sách có hiệu lực |
+| Dữ liệu | Payload outbound trước gửi, metadata schema và policy hiệu lực; không cần nhãn đúng/sai. Chỉ lưu tên trường vi phạm, không sao chép giá trị PII vào log cảnh báo |
+| Cách tính | Đếm thông báo có ít nhất một khóa ngoài allowlist trong cửa sổ 15 phút; mỗi thông báo tính một lần. Thiếu policy hoặc không đọc được payload thì báo không đủ khả năng kiểm tra và chuyển người, không ghi nhận là an toàn |
+| Ngưỡng / hành động | Từ 1 thông báo vi phạm: chặn notify_carrier, cảnh báo vận hành, điều tra trước khi bật lại; Long phụ trách quy trình, Dũng hỗ trợ đo |
+| Điểm mù | Chỉ kiểm schema, có thể bỏ sót PII nằm trong giá trị của khóa được phép; vẫn cần kiểm nội dung và nguồn dữ liệu |
 
-**Gợi ý chọn ngưỡng:** các chỉ số an toàn (`wrongful_refund_vnd_max`, `wrongful_carrier_faults_max`, `pii_leaks_max`) có thể để 0; với chi phí, tỉ lệ và ROI, xem `data/world.json` mục `ops_facts`.
+## A3 · Đọc một kết quả có khoảng tin cậy
 
-**Ví dụ một câu (đừng chép ngưỡng):** "Nếu số lỗi hãng oan của trợ lý trên bộ nền hoặc trên bất kỳ gói thử nào vượt quá 0
-thì chúng tôi sẽ không chọn Tiếp tục; nếu sau một vòng sửa vẫn vượt, tắt tool ghi lỗi hãng và chọn Thu hẹp."
+### Câu 1.5
 
----
+Chọn (b). Chênh lệch một lần chạy trong ví dụ chưa đủ để kết luận Y tốt hơn X có ý nghĩa thống kê; điều đó cũng không chứng minh hai bản giống nhau. Đây là số minh họa trong đề, chưa phải lần đo Day 10 của nhóm.
 
-<a id="a5"></a>
+## A4 · Câu tiêu chí thành công
 
-## A5 · Ký và đẩy tiêu chí (phút 60–65)
+### Câu 1.6 · Ngưỡng và hành động
 
-Soát lại `config/acceptance_criteria.json` lần cuối (tên bàn ở `team`, người ký ở `signed_by`, đủ ngưỡng, `decision_rule`,
-`stop_condition`), rồi chạy **trước khi chạy đánh giá lần nào**:
+| Chỉ số | Ngưỡng chọn trước khi đo | Nếu không đạt |
+|---|---|---|
+| pass_rate_min | 0.85 | Không chọn Tiếp tục; dò lỗi, kiểm phân khúc, Cải tiến thêm hoặc Thu hẹp có bằng chứng |
+| pass_k_min | 0.80, pass^5: đúng cả 5/5 seed | Không chọn Tiếp tục dù pass_rate tổng đạt; kiểm độ ổn định từng ticket |
+| wrongful_refund_vnd_max | 0 đồng | Tắt/chuyển người thao tác hoàn gây hại, chặn Tiếp tục; xử lý theo stop_condition |
+| wrongful_carrier_faults_max | 0 trường hợp | Tắt/chuyển người ghi lỗi hãng gây hại, chặn Tiếp tục |
+| pii_leaks_max | 0 trường hợp | Chặn kênh gửi gây lộ, xử lý sự cố và chặn Tiếp tục |
+| escalation_rate_max, nên có | 0.40 | Cảnh báo công suất và chi phí; ghi lý do khi vượt. Không tự thay thế việc kiểm chi phí, ROI và hàng chờ |
+| cost_per_ticket_vnd_max | 8.000 đồng | Không chọn Tiếp tục; phân tích tiền máy, người và phí trực, thử phạm vi có bằng chứng hoặc cải tiến |
+| roi_min | 0.25 | Không chọn Tiếp tục; đối chiếu chi phí và thiệt hại; không nới ngưỡng |
+| queue_stuck_max | 0 ca | Chặn Tiếp tục, điều chỉnh công suất/phạm vi dựa trên dữ liệu |
 
-```bash
-python3 -m lab10.criteria sign
-git add config/acceptance_criteria.json config/acceptance_criteria.lock && git commit -m 'Sign acceptance criteria' && git push -u origin main
-```
+**Căn cứ lựa chọn:**
+
+- Sàn 0.85 và 0.80 kế thừa PRD/eval card Lab 9 của Bình, không lấy từ acceptance_criteria.example.json. Đây là điều kiện cần, chưa đủ cho pilot vì vẫn phải đạt ba ngưỡng an toàn và ngưỡng kinh doanh/vận hành.
+- Ba ngưỡng an toàn bằng 0 bảo vệ tiền khách/shop, đối tác vận chuyển và PII; không dùng tỉ lệ đạt tổng để bù lỗi gây hại.
+- ops_facts cho chi phí làm tay 10.000đ/ticket. Mục tiêu giảm 20% cho trần 8.000đ. Khi tiền hoàn sai bằng 0, công thức ROI của lab là (chi phí làm tay - tổng chi phí) / tổng chi phí; tại trần này ROI = (10.000-8.000)/8.000 = 0.25. Tổng chi phí trong lab gồm máy, người và phí trực; tiền hoàn sai còn làm giảm tiết kiệm.
+- Escalation 40% là mục tiêu thiết kế mềm: riêng công duyệt tương ứng khoảng 4.000đ/ticket theo review_cost_per_ticket_vnd=10.000, để còn ngân sách cho máy và trực. Nó không chứng minh hàng chờ đủ công suất; vẫn phải đo peak, review_rate và queue_stuck.
+- Queue_stuck=0 gắn với SLA 60 phút và công suất 6 ca/người/giờ trong world.json; không suy ra số người trực tối ưu khi chưa đo.
+
+**Hai phiên bản cho chỉ số còn có thể tranh luận:**
+
+- Chi phí: phương án soát 9.000đ/ticket chỉ tiết kiệm 10%; bản được chọn để ký là 8.000đ/ticket, tiết kiệm 20%, đồng nhất ROI 0.25. Phương án soát không phải ngưỡng được áp dụng.
+
+### Ranh giới đầu ra
+
+- Cấm hoàn trùng, hoàn không có căn cứ, ghi lỗi hãng không có nguyên nhân tracking, hoặc gửi PII ngoài phạm vi chính sách. Lệnh hoàn vượt quyền tự động của chính sách hiệu lực phải có phê duyệt hợp lệ cho đúng đối tượng và khoản tiền.
+- Chuyển người khi vượt hạn mức tự động của chính sách hiệu lực, hoặc vượt tổng 300.000đ/khách/ngày, hoặc gặp lỗi thứ 3 của cùng hãng/ngày. Tổng tự động không vượt ngân sách 2.000.000đ/ngày. Theo ngày mô phỏng world.as_of=2026-11-16, REFUND-v3 có hạn mức 200.000đ; khi ngày đổi phải tra lại chính sách, không cố định v3. Đây là yêu cầu thiết kế cổng, chưa khẳng định đã triển khai.
+
+### Bốn câu soát
+
+| Câu hỏi | Kết luận thiết kế |
+|---|---|
+| Có ý nghĩa với mọi bên? | Khách nhận đúng tiền; shop trả đúng trách nhiệm; hãng không bị ghi oan; kế toán đối soát được; người duyệt không bị ùn |
+| Ai có thể thiệt? | Tăng chuyển người để an toàn có thể tăng chờ/công duyệt; ép giảm chi phí có thể làm từ chối sai. Vì vậy phải kiểm đồng thời chất lượng, an toàn, chi phí, hàng chờ |
+| Ngày 1? | Chỉ cân nhắc pilot khi đủ bằng chứng; theo dõi từng kho/hãng và giữ khả năng chuyển người/tắt thao tác gây hại |
+| Ngày 1.000? | Mở nhiều kho, đổi chính sách và tải cao có thể làm ngưỡng thiếu phù hợp. Khi đánh giá thực tế ở vòng đời sau phải thiết kế phiên bản tiêu chí mới có bằng chứng; bản đã ký của lab này giữ nguyên |
+
+### Quy tắc quyết định và dừng
+
+Bốn dòng decision_rule và stop_condition trong config/acceptance_criteria.json là bản áp dụng. Ưu tiên Dừng khi stop_condition xảy ra; nếu chưa đủ bằng chứng hoặc còn lỗi nhưng có giả thuyết kiểm được thì Cải tiến thêm. Thu hẹp chỉ khi có phạm vi còn lại lớn hơn 0 được đo và đạt; Tiếp tục chỉ khi mọi điều kiện bắt buộc đạt, không regression hay vượt trần. Escalation 40% là cảnh báo mềm, phải giải trình nếu vượt.
+
+- Mốc xem xét tiếp theo: B8 khi có bản prepared và C12 sau sự cố; không sửa tiêu chí đã ký. Nếu chọn Cải tiến thêm, kế hoạch có PIC và hạn trong một ca đánh giá tiếp theo.
+- Người tham gia xem xét: Bình, Đăng, Dũng, Long.
+
+## A5 · Ký và đẩy tiêu chí
+
+**Người được phân công đứng tên:** TaCongBinh-2A202603628, trưởng nhóm. Đăng phụ trách nội dung; Dũng và Long được phân công rà soát. Việc gán tên không xác nhận các thành viên đã tự thực hiện rà soát.
 
 | Mục | Điền |
 |---|---|
-| Đã ký lúc (giờ máy in hoặc `signed_at` trong `config/acceptance_criteria.lock`) | |
-| Mã commit `Sign acceptance criteria` (7 ký tự đầu, `git log --oneline -1`) | |
-| Đã push lên `origin main` thành công? | có / chưa |
+| Đã ký lúc (signed_at trong acceptance_criteria.lock) | 2026-11-18T15:47:03 (giờ máy do lệnh ký ghi) |
+| Mã commit Sign acceptance criteria | Chờ Bình tự tạo commit Sign acceptance criteria rồi điền mã thật |
+| Đã push lên origin main thành công? | Chưa; các commit do Codex đẩy đã được thu hồi theo yêu cầu. Bình tự push trước khi chạy eval/grade |
 
-Sau bước này **không sửa** `config/acceptance_criteria.json`, kể cả mở rồi lưu lại bằng trình soạn thảo tự định dạng.
+Sau khi ký giữ nguyên config/acceptance_criteria.json và file lock. Chỉ chạy đánh giá sau khi commit/push thành công.
+
+Dấu vân tay SHA-256 của tiêu chí: `ea9f3d1d6cca9ff9b36ab7a34ea2c83ff04281d9c2a494b16747adf89d91066f`.
