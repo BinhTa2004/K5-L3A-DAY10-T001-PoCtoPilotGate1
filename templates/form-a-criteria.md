@@ -105,8 +105,8 @@ Bốn dòng decision_rule và stop_condition trong config/acceptance_criteria.js
 | Mục | Điền |
 |---|---|
 | Đã ký lúc (signed_at trong acceptance_criteria.lock) | 2026-11-18T15:47:03 (giờ máy do lệnh ký ghi) |
-| Mã commit Sign acceptance criteria | Chờ Bình tự tạo commit Sign acceptance criteria rồi điền mã thật |
-| Đã push lên origin main thành công? | Chưa; các commit do Codex đẩy đã được thu hồi theo yêu cầu. Bình tự push trước khi chạy eval/grade |
+| Mã commit Sign acceptance criteria | d64c642 |
+| Đã push lên origin main thành công? | Có; HEAD và origin/main đã trỏ d64c642 trước baseline đầu tiên |
 
 Sau khi ký giữ nguyên config/acceptance_criteria.json và file lock. Chỉ chạy đánh giá sau khi commit/push thành công.
 

@@ -1,0 +1,66 @@
+{
+  "kind": "synthetic_guard_invariants",
+  "scope": "Direct guard probes on copied public world; not incident suites or hidden tests",
+  "results": [
+    {
+      "name": "refund_proposal_wrong_amount_escalates",
+      "pass": true
+    },
+    {
+      "name": "refund_merchant_payer_requires_human",
+      "pass": true
+    },
+    {
+      "name": "refund_wrong_order_escalates",
+      "pass": true
+    },
+    {
+      "name": "refund_retry_does_not_write_twice",
+      "pass": true
+    },
+    {
+      "name": "carrier_fault_rebound_to_tracking",
+      "pass": true
+    },
+    {
+      "name": "carrier_fault_duplicate_denied",
+      "pass": true
+    },
+    {
+      "name": "carrier_notice_uses_only_allowed_trusted_values",
+      "pass": true
+    },
+    {
+      "name": "carrier_notice_wrong_order_denied",
+      "pass": true
+    },
+    {
+      "name": "valid_approval_is_allowed",
+      "pass": true
+    },
+    {
+      "name": "used_approval_escalates",
+      "pass": true
+    },
+    {
+      "name": "policy_rollover_ignores_stale_active_index",
+      "pass": true
+    },
+    {
+      "name": "unknown_parcel_fails_closed",
+      "pass": true
+    },
+    {
+      "name": "expired_approval_escalates",
+      "pass": true
+    },
+    {
+      "name": "malformed_approval_date_escalates",
+      "pass": true
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "initial_probe_code_hash": "c57b3f7b7c4f426161dc5bca4578781bb29b57f4a937ac0fa7b6aaf948548a32",
+  "date_probe_code_hash": "1cbe2ca24a184bb83ade9d0f53959c6e8f5ccd6e7557cc906db4492efa864b39"
+}

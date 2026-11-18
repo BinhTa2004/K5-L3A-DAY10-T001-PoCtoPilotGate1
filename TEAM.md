@@ -77,9 +77,9 @@ Từ bước này, bản soạn tiêu chí có dùng PRD/eval card Lab 9 của B
 - Người được phân công đứng tên: TaCongBinh-2A202603628, trưởng nhóm.
 - Lệnh ký đã tạo acceptance_criteria.lock; giữ nguyên cả file tiêu chí và lock, không ký lại. Hash đối chiếu trong Phiếu A mục A5.
 - Theo yêu cầu người dùng, ba commit do Codex tạo đã được thu hồi khỏi main; main trên GitHub trở về commit 79a6c79 của người dùng. Nhánh sửa trên GitHub đã được thu hồi. Nội dung bài làm trên máy được giữ lại ở trạng thái chưa commit.
-- Bình tự commit hai file tiêu chí và lock với đúng message Sign acceptance criteria, rồi tự push lên origin main trước khi chạy eval/grade; sau đó cập nhật mã commit và trạng thái push thật trong A5.
+- Bình đã tự commit/push tiêu chí bằng commit d64c642 (Sign acceptance criteria) trước baseline; A5 đã ghi mã thật. Các thay đổi kỹ thuật hiện tại để người dùng tự commit/push.
 - Git cục bộ giữ nguyên byte của config/acceptance_criteria.json khi git add để hash trong commit khớp lock. Không sửa hoặc tự định dạng lại file tiêu chí.
-- Chưa chạy eval/grade Day 10; quyết định v1/v2 chưa ký. Từng người tự xác nhận phần rà soát và đóng góp thực tế của mình.
+- Baseline và các lần base/after vòng 1 đã chạy sau commit d64c642; chưa có prepared, grade sự cố hoặc chữ ký v1/v2. Từng người tự xác nhận phần rà soát và đóng góp thực tế của mình.
 - Bản sao các commit trước thu hồi được giữ ở nhánh backup/day10-before-user-commit trên máy. Codex không tự commit/push tiếp nếu chưa được yêu cầu.
 
 ### Ghi nhận hỗ trợ AI trong bước chuẩn bị
@@ -120,19 +120,21 @@ Trưởng nhóm, Kỹ sư cổng. `lab10/guards.py`; hỗ trợ A4–A5; B0–B2
 
 ### Đóng góp cụ thể
 
-Chờ thành viên tự ghi công việc thực tế đã hoàn thành.
+Thực hiện với hỗ trợ Codex theo yêu cầu của Bình: kiểm tiêu chí và commit d64c642 trước baseline; chạy 5 lần eval có nhật ký; phân tích T-002@55; viết ba cổng G1/G2/G3 trong lab10/guards.py; điền B0–B2, B7.1 và đóng góp kỹ thuật B4/B6; chạy 13 test công khai, kiểm regression và các invariant. Đã bàn giao report thật ở submission/runs/.
+
+Chưa chốt checkpoint/prepared hoặc ký v1 vì config và phần nhóm còn trống. Người dùng xác nhận Lab Coach chưa phát thẻ; phần grade, trace, sửa và gom bài cuối vòng 2 chờ đúng thẻ. Chưa xác nhận đã nộp LMS.
 
 ### Bằng chứng
 
-Chờ thành viên bổ sung mã commit, mã lần chạy và vị trí trong phiếu.
+Commit ký tiêu chí do người dùng tạo: d64c642. Baseline: R-base-before-20261118-160203-bde05c. Bản after cuối: R-base-after-20261118-160732-1cbe2c. Nhật ký và report: submission/runs/. Phiếu B: B0, B1, B2, phần kỹ thuật B4/B6, B7.1 và ghi chú bàn giao B8. Code hiện chưa commit/push theo yêu cầu người dùng.
 
 ### Exit ticket
 
-Chờ thành viên tự viết một điều học được và một điều còn chưa chắc.
+Bản nháp để Bình tự đọc và xác nhận trước nộp: điều học được — pass_rate gần 100% vẫn có thể che lỗi gây thiệt hại, cần kiểm lệnh ghi bằng nguồn sự thật và tiêu chí an toàn riêng; điều còn chưa chắc — cổng vòng 1 có giữ được hiệu quả khi tải, chính sách, dữ liệu và quyền duyệt thay đổi hay không. Chưa có thẻ sự cố/test ẩn/pilot thật để kết luận.
 
 ### Sử dụng AI
 
-Thành viên tự ghi phần việc đã dùng AI và cách kiểm tra lại, nếu có.
+Có dùng Codex để đọc code, chạy CLI, đề xuất và viết guards, soạn phần kỹ thuật Phiếu B, ghi bằng chứng. Các số liệu đều lấy từ lần chạy thực tế; không chỉnh report, tiêu chí đã ký, code bị khóa hoặc dữ liệu đề. Bình cần đọc lại, hiểu và tự xác nhận đóng góp trước khi nộp.
 
 ## NguyenTuanDung-2A202603608
 
